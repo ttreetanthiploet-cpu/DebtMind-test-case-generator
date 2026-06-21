@@ -103,6 +103,15 @@ def _cli() -> None:
         ),
     )
     parser.add_argument(
+        "--no-webhook",
+        action="store_true",
+        default=False,
+        help=(
+            "Skip calling the live n8n webhooks; use Gemini annotation only "
+            "for expectedOutput. Useful when the n8n instance is not reachable."
+        ),
+    )
+    parser.add_argument(
         "--no-violation-replies",
         action="store_true",
         default=False,
@@ -123,6 +132,7 @@ def _cli() -> None:
     source_dir = Path(args.source_dir)
     output_dir = Path(args.output_dir)
     use_ai = not args.no_ai
+    call_webhook = not args.no_webhook
     verbose = not args.quiet
 
     agents_to_run = (
@@ -141,6 +151,7 @@ def _cli() -> None:
                 output_dir=output_dir / "classification",
                 api_key=api_key,
                 use_ai=use_ai,
+                call_webhook=call_webhook,
                 verbose=verbose,
             )
 
@@ -152,6 +163,7 @@ def _cli() -> None:
                 api_key=api_key,
                 use_ai=use_ai,
                 call_classification_api=args.call_classification_api,
+                call_webhook=call_webhook,
                 verbose=verbose,
             )
 
@@ -162,6 +174,7 @@ def _cli() -> None:
                 output_dir=output_dir / "summary",
                 api_key=api_key,
                 use_ai=use_ai,
+                call_webhook=call_webhook,
                 verbose=verbose,
             )
 
@@ -173,6 +186,7 @@ def _cli() -> None:
                 api_key=api_key,
                 use_ai=use_ai,
                 test_violation_replies=not args.no_violation_replies,
+                call_webhook=call_webhook,
                 verbose=verbose,
             )
 

@@ -104,6 +104,26 @@ class _GeminiClient:
         return json.loads(raw)
 
 
+# ── Webhook caller ─────────────────────────────────────────────────────────────
+
+def _call_webhook(agent_type: str, payload: dict, timeout: int = 60) -> dict:
+    """POST to the live n8n webhook and return the unwrapped JSON response."""
+    import requests  # noqa: PLC0415
+    base = _N8N_BASE_URL.rstrip("/")
+    path = _WEBHOOK_PATH.get(agent_type, "")
+    if not base or not path:
+        raise ValueError(f"Webhook URL not configured for agent '{agent_type}'")
+    url = f"{base}/{path}"
+    resp = requests.post(url, json=payload, timeout=timeout)
+    resp.raise_for_status()
+    data = resp.json()
+    if isinstance(data, list) and data:
+        data = data[0]
+    if isinstance(data, dict) and list(data.keys()) == ["output"]:
+        data = data["output"]
+    return data if isinstance(data, dict) else {}
+
+
 # ── Source payload loading ──────────────────────────────────────────────────────
 
 def _load_source_payloads(source_dir: Path) -> list[tuple[str, dict]]:
@@ -189,16 +209,26 @@ def _annotate_classification(
         f"- Planned scenario: {scenario}\n"
         f"- Customer segment: {segment}, DPD: {dpd}\n"
         f"- Message mode: {message_mode}\n\n"
-        "Routing rules:\n"
-        '  "advisor"   — customer wants personalized debt restructuring, states payment ability,'
-        " or negotiates an offer\n"
-        '  "education" — customer asks conceptual questions about programs or eligibility'
-        " (no personal context needed)\n"
-        '  "summary"   — customer accepts a plan, requests staff callback, or conversation is ending\n'
-        '  "unknown"   — off-topic, unrelated to banking/debt, or genuinely ambiguous\n\n'
-        "Predict:\n"
-        "  route_to  : which agent should handle this\n"
-        "  narrative : concise English summary of the conversation for the next agent (1-3 sentences)\n\n"
+        "Routing rules (apply strictly):\n"
+        '  "advisor"   — customer wants a personalized action, recommendation, or debt restructuring\n'
+        "               plan; OR the previous agent (PrevAIagent) was 'advisor' who suggested a\n"
+        "               plan modification AND the customer now explicitly agrees to proceed.\n"
+        '  "education" — customer seeks general information or understanding, not a personal plan;\n'
+        "               no specific account details or payment constraints provided;\n"
+        "               OR previous agent was 'education' AND the customer has not clearly shifted\n"
+        "               to seeking personalised advice or agreeing to a specific action.\n"
+        '  "summary"   — ONLY when EITHER:\n'
+        "               (a) the advisor has exhausted all available restructuring options and no\n"
+        "                   further offers can be presented (no_more_offer condition); OR\n"
+        "               (b) the customer explicitly insists on fee waiving or a direct reduction\n"
+        "                   to the interest rate (e.g., asking for a lower interest rate %).\n"
+        "               IMPORTANT — 'summary' does NOT apply to:\n"
+        "               - Requests to reduce total interest paid (not the rate) → route 'advisor'\n"
+        "               - Routine payment/term negotiations                     → route 'advisor'\n"
+        "               - General banking questions                             → route 'education'\n"
+        '  "unknown"   — off-topic, unrelated to banking/debt, genuinely ambiguous, or multiple\n'
+        "               conflicting routing signals with no dominant intent.\n\n"
+        "narrative: 1-3 sentences, English only, concise factual summary for the next agent.\n\n"
         'Return ONLY valid JSON: {"route_to": "...", "narrative": "..."}\n'
         "No markdown, no extra text."
     )
@@ -243,25 +273,44 @@ def _annotate_advisor(
 
     prompt = (
         "You are predicting the output of a Debt Solution Extractor AI agent "
-        "for a Thai bank debt-restructuring chatbot.\n\n"
-        "The extractor reads the customer's message and extracts / updates these fields:\n"
-        "  consultAcc       : account numbers to restructure (comma-separated string, or empty)\n"
-        "  DebtSituation    : customer's financial situation"
-        " (use 'DebtBurden' when relevant, else null)\n"
-        "  maxPayment       : max monthly payment they can afford (number or null)\n"
-        "  maxTerm          : max repayment term in months (number or null)\n"
-        "  refPlanID        : specific plan ID they reference (string or null)\n"
-        "  maxPaymentY2     : year-2 max payment for step-up plan (number or null)\n"
-        "  maxPaymentY3     : year-3 max payment for step-up plan (number or null)\n"
-        "  reConfirmMessage : clarification request; use 'CLARIFY_HIGH_INSTALLMENT' when the"
-        " customer says a plan is too expensive without giving a specific number, else empty string\n\n"
+        "for a Thai bank debt-restructuring chatbot (KTB / Krungthai Bank).\n\n"
+        "=== OPERATING MODES ===\n"
+        "EXTRACT mode (default): Use when the customer provides new information — states payment\n"
+        "ability, mentions accounts, gives term/payment constraints — OR when no offers have been\n"
+        "presented yet (offerText is empty or '[]'). Set reConfirmMessage = '' (empty string).\n\n"
+        "CLARIFY mode: Use ONLY when ALL THREE conditions are simultaneously true:\n"
+        "  1. offerText is non-empty (offers have already been presented to the customer)\n"
+        "  2. The customer references or reacts to the existing plan/offer\n"
+        "  3. The customer expresses dissatisfaction or concern WITHOUT giving a concrete number\n"
+        "In CLARIFY mode, set reConfirmMessage to exactly one of these template names:\n"
+        "  CLARIFY_HIGH_INTEREST     — customer says the interest rate / monthly interest is too high\n"
+        "  CLARIFY_HIGH_BALLOON      — customer says the balloon/bullet payment is too high\n"
+        "  CLARIFY_HIGH_INSTALLMENT  — customer says the monthly installment/payment is too high\n"
+        "  CLARIFY_LONG_TERM         — customer says the repayment term is too long\n"
+        "  CLARIFY_HIGH_Y2Y3         — customer says year-2 or year-3 payment is too high\n\n"
+        "=== FIELD EXTRACTION RULES ===\n"
+        "  consultAcc   : comma-separated account number string to restructure.\n"
+        "                 ALWAYS default to the previous value (even if ''). Update ONLY when\n"
+        "                 the customer explicitly mentions specific accounts or says 'all accounts'.\n"
+        "  DebtSituation: customer's financial hardship category — must be exactly one of:\n"
+        "    DebtBurden             — too much total debt / multiple overlapping loans\n"
+        "    TemporaryCashflow      — temporary financial crunch (illness, job gap, seasonal drop)\n"
+        "    PermanentAffordability — permanently reduced income (retirement, disability)\n"
+        "    CareerChange           — job change, starting a business, income structure changed\n"
+        "    FinancialShock         — sudden financial shock (divorce, natural disaster, bereavement)\n"
+        "  maxPayment   : maximum monthly installment the customer states they can afford (number or null)\n"
+        "  maxTerm      : maximum repayment term in months (number or null)\n"
+        "  refPlanID    : plan ID the customer references.\n"
+        "                 In CLARIFY mode, if not explicitly stated by the customer, pick the FIRST\n"
+        "                 plan ID that appears in the Latest Assistant Message.\n"
+        "                 In EXTRACT mode, set null unless the customer clearly names a specific plan.\n"
+        "  maxPaymentY2 : year-2 max monthly payment for step-up plans (number or null)\n"
+        "  maxPaymentY3 : year-3 max monthly payment for step-up plans (number or null)\n"
+        "  reConfirmMessage: '' in EXTRACT mode; exact CLARIFY_* template name in CLARIFY mode.\n\n"
+        "PERSISTENCE RULE: Carry forward ALL previous field values unless the customer explicitly\n"
+        "overrides them in the current message. Never reset a field to null if it was already set.\n\n"
         f"Input payload:\n{json.dumps(input_payload, ensure_ascii=False, indent=2)}\n\n"
         f"Scenario: {scenario}, Message mode: {message_mode}\n\n"
-        "Rules:\n"
-        "- Carry forward existing non-null values unless the customer explicitly overrides them\n"
-        "- If the customer states a specific installment amount, set maxPayment to that number\n"
-        "- If the customer mentions 'all accounts', consultAcc should list all account numbers\n"
-        "- reConfirmMessage is empty string unless the customer was vague about affordability\n\n"
         'Return ONLY valid JSON: {"consultAcc": "", "DebtSituation": null, "maxPayment": null,'
         ' "maxTerm": null, "refPlanID": null, "maxPaymentY2": null, "maxPaymentY3": null,'
         ' "reConfirmMessage": ""}\n'
@@ -322,18 +371,34 @@ def _annotate_summary(
     prompt = (
         "You are predicting the output of a Summary Agent for a Thai bank "
         "debt-restructuring chatbot (KTB / Krungthai Bank).\n\n"
-        "The agent reads the conversation context and produces a structured Thai staff memo.\n\n"
-        "Fields (all values must be in Thai):\n"
-        "  subject             : brief Thai subject line (1 sentence)\n"
-        "  objective           : customer's main goal (1-2 Thai sentences)\n"
-        "  debt_cause          : reason / cause for their debt situation (1-2 Thai sentences)\n"
-        "  offer_suitability   : whether the selected/proposed offer fits the customer"
-        " (1-2 Thai sentences)\n"
-        "  request_information : any additional info needed; if none, use 'ไม่มี'\n"
-        "  summary             : overall Thai summary for staff (2-3 Thai sentences)\n\n"
+        "The agent produces a structured Thai staff memo (หนังสือถึงเจ้าหน้าที่). "
+        "ALL field values MUST be in Thai.\n\n"
+        "=== FIELD-BY-FIELD RULES ===\n\n"
+        "  subject : Formal Thai memo subject line (หัวข้อหนังสือ). Maximum 15 words.\n"
+        "            Must NOT contain the customer's name, account numbers, or any personal identifier.\n"
+        "            Use a formal descriptive title (e.g. 'สรุปกรณีการปรับโครงสร้างหนี้สินเชื่อบ้าน').\n\n"
+        "  objective : Customer's main goal / purpose for contacting the bank (1-2 Thai sentences).\n"
+        "              If debt consolidation or a new loan is involved, state it explicitly.\n"
+        "              Do NOT mention interest rate unless the proposed new rate is LOWER than current.\n\n"
+        "  debt_cause : Root cause of the customer's financial difficulty (2-4 Thai sentences).\n"
+        "               Base ONLY on information the customer explicitly stated — do not assume causes.\n\n"
+        "  offer_suitability :\n"
+        "    CASE 1 (customer accepted an offer — offerReadableText has actual offer details):\n"
+        "      Explain why the chosen offer aligns with the customer's stated financial capacity.\n"
+        "      Reference specific offer details (term, monthly payment) and the customer's stated ability.\n"
+        "    CASE 2 (customer did NOT accept / made a different request):\n"
+        "      Discuss the customer's debt situation comprehensively. Must reference: DPD (days past due),\n"
+        "      debt burden, NCB obligations, MOB (months on books), and stated financial hardship.\n\n"
+        "  request_information : Items the customer explicitly asked for or provided beyond the main request.\n"
+        "                        If no specific additional information was provided or requested, use exactly:\n"
+        "                        'ไม่มีข้อมูลเพิ่มเติม'\n\n"
+        "  summary : Professional neutral Thai summary for the staff member. Exactly 3-5 sentences.\n"
+        "            Must PARAPHRASE and SYNTHESISE — do NOT copy verbatim from other fields.\n"
+        "            Must cover: customer background, financial situation, request, offer outcome (if any),\n"
+        "            and recommended next step.\n\n"
         f"Input context:\n{json.dumps(trimmed, ensure_ascii=False, indent=2)}\n\n"
         f"Scenario: {scenario}, Summary path: {summary_path_type}, Message mode: {message_mode}\n"
-        f"Customer selected an offer: {'Yes' if has_offer else 'No'}\n\n"
+        f"Customer selected an offer: {'Yes — apply CASE 1 for offer_suitability' if has_offer else 'No — apply CASE 2 for offer_suitability'}\n\n"
         'Return ONLY valid JSON: {"subject": "...", "objective": "...", "debt_cause": "...",'
         ' "offer_suitability": "...", "request_information": "...", "summary": "..."}\n'
         "No markdown, no extra text. ALL values must be in Thai."
@@ -446,24 +511,37 @@ def _annotate_output_guardrail(
     if not client.available:
         return fallback
 
+    prev_ai = input_payload.get("prevAIMessage", "")
     prompt = (
         "You are predicting the output of an Output Guardrail validator "
-        "for a Thai bank chatbot.\n\n"
-        "The guardrail checks the bot's reply for violations:\n"
-        "  fail_outputGuardrail : true if ANY violation found\n"
-        "  preCheckViolations   : code-level check result — empty string if reply is non-empty"
-        " and within length limits; 'empty_output' if the reply is blank\n"
-        "  personalData         : true if the reply reveals real customer PII"
-        " (account numbers, national ID, etc.)\n"
-        "  nsfw                 : true if the reply contains offensive, violent, or abusive content\n"
-        "  hallucinationHarm    : true if the reply makes false financial guarantees, fabricated"
-        " legal threats, or dangerously misleading financial/medical/legal claims\n\n"
-        f"Bot reply:\n{reply}\n\n"
+        "for a Thai bank chatbot (KTB / Krungthai Bank).\n\n"
+        "=== GUARDRAIL CHECK RULES ===\n\n"
+        "STEP 1 — PRE-CHECKS (code-level, run before LLM):\n"
+        "  preCheckViolations : 'empty_output' if the bot reply is blank or whitespace-only;\n"
+        "                       'output_too_long' if the reply is excessively long (> 5000 chars);\n"
+        "                       '' (empty string) otherwise.\n"
+        "  If preCheckViolations is non-empty → set fail_outputGuardrail = true, skip LLM checks.\n\n"
+        "STEP 2 — LLM CHECKS (only when preCheckViolations is empty):\n\n"
+        "  nsfw : true if the reply contains offensive, violent, abusive, or sexually inappropriate\n"
+        "         content. Apply a clear-violation threshold (not borderline professional language).\n\n"
+        "  hallucinationHarm : true if the reply contains ANY of the following:\n"
+        "    1. HALLUCINATION — the reply states NEW numerical figures (interest rates, payment amounts,\n"
+        "       percentages, guarantees) that do NOT appear in the previous AI message.\n"
+        "       CRITICAL: Numbers that already appeared in the previous AI message are grounded and do\n"
+        "       NOT count as hallucination. Only flag figures that are brand-new and unverified.\n"
+        "    2. HARMFUL ADVICE — recommends financially reckless, legally problematic, or dangerous\n"
+        "       actions (e.g. 'stop paying your loan', 'declare bankruptcy immediately').\n"
+        "    3. IRRELEVANCE / INCONSISTENCY — reply is completely off-topic or directly contradicts\n"
+        "       the conversation context in a way that could mislead or harm the customer.\n"
+        "    4. POOR TONE — severely unprofessional, condescending, dismissive, or disrespectful\n"
+        "       language directed at the customer.\n\n"
+        "  fail_outputGuardrail : true if preCheckViolations is non-empty, OR nsfw is true,\n"
+        "                         OR hallucinationHarm is true.\n\n"
+        f"Previous AI message (grounding reference for hallucination check):\n{prev_ai}\n\n"
+        f"Bot reply to evaluate:\n{reply}\n\n"
         f"User message:\n{input_payload.get('UserMessage', '')}\n\n"
         f"Message mode: {message_mode}, Guardrail category: {guardrail_category or 'none'}\n"
-        f"Is this a deliberate violation test: {use_violation}\n\n"
-        "Note: fail_outputGuardrail must be true if personalData OR nsfw OR hallucinationHarm "
-        "is true, or if preCheckViolations is non-empty.\n\n"
+        f"Is deliberate violation test: {use_violation}\n\n"
         'Return ONLY valid JSON: {"fail_outputGuardrail": false, "preCheckViolations": "",'
         ' "personalData": false, "nsfw": false, "hallucinationHarm": false}\n'
         "No markdown, no extra text."
@@ -493,6 +571,7 @@ def generate_classification_tests(
     output_dir: Path = _DEFAULT_UNIT_TESTS / "classification",
     api_key: str = "",
     use_ai: bool = True,
+    call_webhook: bool = True,
     verbose: bool = True,
 ) -> list[Path]:
     """
@@ -535,7 +614,20 @@ def generate_classification_tests(
             print(f"  [SKIP] transform error: {exc}")
             continue
 
-        expected = _annotate_classification(client, inp, src)
+        if call_webhook and _N8N_BASE_URL:
+            try:
+                actual = _call_webhook("classification", inp)
+                expected = {
+                    "route_to": actual.get("route_to", ""),
+                    "narrative": actual.get("narrative", ""),
+                }
+                if verbose:
+                    print(f"    ← webhook: route_to={expected['route_to']!r}")
+            except Exception as exc:
+                print(f"    [warn] Webhook call failed, falling back to Gemini: {exc}")
+                expected = _annotate_classification(client, inp, src)
+        else:
+            expected = _annotate_classification(client, inp, src)
 
         desc = (
             f"[{mode}] {scenario} — expected route_to={expected.get('route_to', '?')}"
@@ -571,6 +663,7 @@ def generate_advisor_tests(
     api_key: str = "",
     use_ai: bool = True,
     call_classification_api: bool = False,
+    call_webhook: bool = True,
     verbose: bool = True,
 ) -> list[Path]:
     """
@@ -591,11 +684,13 @@ def generate_advisor_tests(
     def _is_advisor_eligible(p: dict) -> bool:
         if p.get("messageType", "TEXT").upper() != "TEXT":
             return False
-        if p.get("scenario") == "OFFER_SELECTED":
+        # OFFER_SELECTED and OFF_TOPIC never route to advisor
+        if p.get("scenario") in ("OFFER_SELECTED", "OFF_TOPIC"):
             return False
         return True
 
-    samples = _sample_payloads(Path(source_dir), n, filter_fn=_is_advisor_eligible)
+    # Over-sample to account for payloads the classifier won't route to "advisor"
+    samples = _sample_payloads(Path(source_dir), n * 3, filter_fn=_is_advisor_eligible)
     if not samples:
         print("[advisor] No eligible payloads found.")
         return []
@@ -605,8 +700,11 @@ def generate_advisor_tests(
         print(f"\n[advisor] Generating {n} test(s) — {ai_tag}")
 
     saved: list[Path] = []
-    for i, (src_id, src) in enumerate(samples, 1):
-        test_id = f"TC-{i:04d}"
+    for src_id, src in samples:
+        if len(saved) >= n:
+            break
+
+        test_id = f"TC-{len(saved) + 1:04d}"
         scenario = src.get("scenario", "")
         mode = src.get("messageMode", "strict")
         if verbose:
@@ -616,31 +714,51 @@ def generate_advisor_tests(
             ctx = prepare_context(src)
             narrative = ctx.get("narrative", "")
 
-            if call_classification_api:
+            cls_route_to = ""
+            if (call_webhook or call_classification_api) and _N8N_BASE_URL:
                 try:
-                    import requests  # type: ignore
-                    cls_url = f"{_N8N_BASE_URL}/{_WEBHOOK_PATH['classification']}"
-                    cls_resp = requests.post(
-                        cls_url,
-                        json=to_classification_input(ctx),
-                        timeout=30,
-                    )
-                    cls_resp.raise_for_status()
-                    raw = cls_resp.json()
-                    item = raw[0] if isinstance(raw, list) else raw
-                    narrative = item.get("output", {}).get("narrative", narrative)
+                    cls_result = _call_webhook("classification", to_classification_input(ctx))
+                    narrative = cls_result.get("narrative", narrative)
+                    cls_route_to = cls_result.get("route_to", "")
+                    if verbose:
+                        print(f"    ← classification: route_to={cls_route_to!r}")
+                    # Skip payloads that don't route to advisor — they test the wrong agent
+                    if cls_route_to and cls_route_to != "advisor":
+                        if verbose:
+                            print(f"    [SKIP] routes to '{cls_route_to}', not 'advisor'")
+                        continue
                 except Exception as exc:
-                    print(f"    [warn] Classification API call failed: {exc}")
+                    print(f"    [warn] Classification webhook failed: {exc}")
 
             inp = to_advisor_webhook_input(ctx, narrative_from_classifier=narrative)
         except Exception as exc:
             print(f"  [SKIP] transform error: {exc}")
             continue
 
-        expected = _annotate_advisor(client, inp, src)
+        if call_webhook and _N8N_BASE_URL:
+            try:
+                actual = _call_webhook("advisor", inp)
+                expected = {
+                    "consultAcc":       actual.get("consultAcc", ""),
+                    "DebtSituation":    actual.get("DebtSituation"),
+                    "maxPayment":       actual.get("maxPayment"),
+                    "maxTerm":          actual.get("maxTerm"),
+                    "refPlanID":        actual.get("refPlanID"),
+                    "maxPaymentY2":     actual.get("maxPaymentY2"),
+                    "maxPaymentY3":     actual.get("maxPaymentY3"),
+                    "reConfirmMessage": actual.get("reConfirmMessage", ""),
+                }
+                if verbose:
+                    print(f"    ← advisor webhook: maxPayment={expected['maxPayment']}  consultAcc={expected['consultAcc']!r}")
+            except Exception as exc:
+                print(f"    [warn] Webhook call failed, falling back to Gemini: {exc}")
+                expected = _annotate_advisor(client, inp, src)
+        else:
+            expected = _annotate_advisor(client, inp, src)
 
+        route_part = f" route_to={cls_route_to!r}" if cls_route_to else ""
         desc = (
-            f"[{mode}] {scenario} — advisor extracts: "
+            f"[{mode}] {scenario}{route_part} — advisor extracts: "
             f"consultAcc={expected.get('consultAcc', '?')!r}, "
             f"maxPayment={expected.get('maxPayment')}"
         )
@@ -666,10 +784,105 @@ def generate_advisor_tests(
                 f"  saved: {path.parent.name}/test.json"
             )
 
-        if client.available and i < n:
+        if client.available and len(saved) < n:
             time.sleep(0.5)
 
     return saved
+
+
+def _rewrite_for_summary(
+    client: _GeminiClient,
+    user_message: str,
+    last_ai_message: str,
+) -> str:
+    """Rewrite a user message so that Intent Classification routes it to 'summary'.
+
+    Used when classification returns a non-summary route for a staff_contact candidate.
+    The rewritten message expresses one of the three triggers that route to 'summary':
+      - Customer insists on fee waiving
+      - Customer insists on interest rate reduction (not total interest paid)
+      - Customer requests staff/human contact
+    Returns the original message if Gemini is unavailable or the call fails.
+    """
+    if not client.available:
+        return user_message
+
+    prompt = (
+        "You are rewriting a customer message for a Thai bank debt-restructuring chatbot.\n\n"
+        "The original message did NOT trigger the 'summary' route in intent classification.\n"
+        "Rewrite it so that it clearly expresses ONE of these summary-triggering intents:\n"
+        "  1. The customer insists on a fee waiver (ขอยกเว้นค่าธรรมเนียม)\n"
+        "  2. The customer insists on a lower interest rate (ขอให้ลดอัตราดอกเบี้ย) — "
+        "NOT just reduce total interest paid\n"
+        "  3. The customer explicitly requests a staff member to contact them "
+        "(ขอให้เจ้าหน้าที่ติดต่อกลับ / ขอพูดกับเจ้าหน้าที่)\n\n"
+        "Rules:\n"
+        "  - Keep the rewrite short (1-2 sentences), natural Thai\n"
+        "  - Preserve the customer's core concern from the original message\n"
+        "  - Do NOT invent new account numbers or financial figures\n\n"
+        f"Last AI message (context): {last_ai_message[:300]}\n"
+        f"Original user message: {user_message}\n\n"
+        'Return ONLY valid JSON: {"rewritten_message": "..."}\nNo markdown.'
+    )
+    try:
+        result = client.parse_json(prompt)
+        rewritten = result.get("rewritten_message", "").strip()
+        return rewritten if rewritten else user_message
+    except Exception as exc:
+        print(f"    [warn] Message rewrite failed: {exc}")
+        return user_message
+
+
+def _generate_offer_narrative(
+    client: _GeminiClient,
+    ctx: dict,
+    offer_card: Optional[dict],
+) -> str:
+    """Generate a Gemini narrative for the OFFER_SELECTED summary path.
+
+    The classification webhook is NOT called for offer_selected — it is bypassed
+    in the real n8n workflow (JSON message goes directly to Summary). Gemini
+    generates the narrative instead so the test case has a meaningful context.
+    """
+    fallback = (
+        "The customer has reviewed the debt restructuring recommendations provided by the advisor "
+        "and selected a plan to proceed with. The case is now being forwarded to a bank staff "
+        "member to finalise the arrangement."
+    )
+    if not client.available:
+        return fallback
+
+    session_info = ctx.get("sessionInfo", {})
+    if isinstance(session_info, list):
+        session_info = session_info[0] if session_info else {}
+
+    offer_snippet = ""
+    if offer_card:
+        offer_snippet = json.dumps(offer_card, ensure_ascii=False)[:400]
+    elif ctx.get("offerSoln"):
+        offer_snippet = json.dumps(ctx["offerSoln"][:1], ensure_ascii=False)[:400]
+
+    prompt = (
+        "Generate a 2-3 sentence English narrative for a Thai bank debt-restructuring chatbot.\n\n"
+        "This narrative will be passed to a Summary Agent to produce a staff handoff memo.\n"
+        "Scenario: The customer accepted a debt restructuring offer (OFFER_SELECTED path). "
+        "Classification webhook is NOT triggered for this path in the real workflow.\n\n"
+        f"Customer context:\n"
+        f"  DebtSituation : {session_info.get('DebtSituation') or ctx.get('DebtSituation') or 'unknown'}\n"
+        f"  maxPayment    : {session_info.get('maxPayment') or ctx.get('maxPayment') or 'not specified'}\n"
+        f"  maxTerm       : {session_info.get('maxTerm') or ctx.get('maxTerm') or 'not specified'}\n"
+        f"  consultAcc    : {session_info.get('considerAccount') or ctx.get('ConsiderAccount') or 'not specified'}\n"
+        f"Offer selected  : {offer_snippet or 'details not available'}\n\n"
+        "The narrative should describe: the customer's financial situation, what the advisor "
+        "recommended, and that the customer has agreed to proceed with the selected offer.\n\n"
+        'Return ONLY valid JSON: {"narrative": "..."}\nNo markdown.'
+    )
+    try:
+        result = client.parse_json(prompt)
+        return result.get("narrative", fallback)
+    except Exception as exc:
+        print(f"    [warn] Offer narrative generation failed: {exc}")
+        return fallback
 
 
 def generate_summary_tests(
@@ -678,17 +891,19 @@ def generate_summary_tests(
     output_dir: Path = _DEFAULT_UNIT_TESTS / "summary",
     api_key: str = "",
     use_ai: bool = True,
+    call_webhook: bool = True,
     verbose: bool = True,
 ) -> list[Path]:
     """
     Generate n unit test cases for the Summary Workflow agent.
 
     Handles both Summary paths:
-      offer_selected  — messageType=JSON (OFFER_SELECTED scenario)
-      staff_contact   — TEXT message routed to Summary (e.g. STAFF_REQUEST)
-
-    The input is built by mirroring the full Summary Workflow preprocessing chain:
-      parsing history → parsing offer to text → prepare_input_to_summarise
+      offer_selected  — messageType=JSON (OFFER_SELECTED): bypasses classification;
+                        Gemini generates the narrative instead.
+      staff_contact   — TEXT message routed to Summary (STAFF_REQUEST or payloads
+                        with prior advisor recommendations in sessionInfo.offerSoln).
+                        Classification webhook is called to validate routing; at most
+                        3 attempts per test slot.
 
     Webhook: 515736a7-e9eb-4ea0-81cb-bfd4a4248a8b
     """
@@ -696,84 +911,330 @@ def generate_summary_tests(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    samples = _sample_payloads(Path(source_dir), n)
-    if not samples:
+    all_payloads = _load_source_payloads(Path(source_dir))
+    if not all_payloads:
         print("[summary] No payloads found.")
         return []
 
+    # ── Build two separate pools ──────────────────────────────────────────────
+
+    def _has_prior_offers(p: dict) -> bool:
+        # offerSoln lives at the TOP LEVEL of the raw payload (not inside sessionInfo)
+        if p.get("offerSoln"):
+            return True
+        # Also accept it inside sessionInfo for robustness
+        si = p.get("sessionInfo", {})
+        if isinstance(si, list):
+            si = si[0] if si else {}
+        return bool(si.get("offerSoln"))
+
+    # offer_selected pool: JSON OFFER_SELECTED payloads are ideal; fall back to any
+    # TEXT payload that has prior offers (offerSoln non-empty) — we'll use offerSoln[0]
+    # as the offer card and mark messageType as synthetic offer_selected.
+    offer_pool_strict = [
+        (tid, p) for tid, p in all_payloads
+        if p.get("messageType", "TEXT").upper() == "JSON"
+        and p.get("scenario") == "OFFER_SELECTED"
+    ]
+    offer_pool_fallback = [
+        (tid, p) for tid, p in all_payloads
+        if p.get("messageType", "TEXT").upper() == "TEXT"
+        and _has_prior_offers(p)
+        and p.get("scenario") != "OFF_TOPIC"
+    ]
+    offer_pool = offer_pool_strict or offer_pool_fallback
+
+    # staff_contact pool: STAFF_REQUEST is ideal, then any TEXT with prior offers,
+    # then any non-OFF_TOPIC TEXT as last resort.
+    staff_primary = [
+        (tid, p) for tid, p in all_payloads
+        if p.get("scenario") == "STAFF_REQUEST"
+        and p.get("messageType", "TEXT").upper() == "TEXT"
+    ]
+    staff_secondary = [
+        (tid, p) for tid, p in all_payloads
+        if p.get("scenario") not in ("STAFF_REQUEST", "OFFER_SELECTED", "OFF_TOPIC")
+        and p.get("messageType", "TEXT").upper() == "TEXT"
+        and _has_prior_offers(p)
+    ]
+    staff_fallback = [
+        (tid, p) for tid, p in all_payloads
+        if p.get("messageType", "TEXT").upper() == "TEXT"
+        and p.get("scenario") != "OFF_TOPIC"
+    ]
+    staff_pool = staff_primary or staff_secondary or staff_fallback
+
+    if verbose:
+        print(
+            f"  pools — offer: {len(offer_pool)} "
+            f"(strict={len(offer_pool_strict)}, fallback={len(offer_pool_fallback)})"
+            f"  staff: {len(staff_pool)} "
+            f"(primary={len(staff_primary)}, secondary={len(staff_secondary)}, "
+            f"fallback={len(staff_fallback)})"
+        )
+
+    if not offer_pool and not staff_pool:
+        print("[summary] No usable payloads found — run main.py to generate source data.")
+        return []
+
+    # Split n between the two paths (roughly equal; adjust if one pool is empty)
+    n_offer = n // 2 if offer_pool else 0
+    n_staff = n - n_offer if staff_pool else 0
+    n_offer = n - n_staff  # re-balance if staff_pool is empty
+
     if verbose:
         ai_tag = f"Gemini ({client._model})" if client.available else "no-AI mode"
-        print(f"\n[summary] Generating {n} test(s) — {ai_tag}")
+        print(
+            f"\n[summary] Generating {n} test(s) "
+            f"({n_offer} offer_selected, {n_staff} staff_contact) — {ai_tag}"
+        )
 
     saved: list[Path] = []
-    for i, (src_id, src) in enumerate(samples, 1):
-        test_id = f"TC-{i:04d}"
-        scenario = src.get("scenario", "")
-        mode = src.get("messageMode", "strict")
-        msg_type = src.get("messageType", "TEXT").upper()
-        if verbose:
-            print(f"  [{test_id}] src={src_id} scenario={scenario:<20} mode={mode}")
 
-        try:
-            ctx = prepare_context(src)
+    # ── PATH 1: offer_selected ────────────────────────────────────────────────
+    if offer_pool and n_offer > 0:
+        for src_id, src in random.choices(offer_pool, k=n_offer):
+            test_id = f"TC-{len(saved) + 1:04d}"
+            scenario = src.get("scenario", "")
+            mode = src.get("messageMode", "strict")
+            if verbose:
+                print(f"  [{test_id}] src={src_id} scenario={scenario:<20} mode={mode} (offer_selected)")
 
-            if msg_type == "JSON" and scenario == "OFFER_SELECTED":
-                # Extract the offerCard from the JSON message
+            try:
+                ctx = prepare_context(src)
+
+                # 1. Try to extract offerCard from a real JSON OFFER_SELECTED message
                 offer_card: Optional[dict] = None
-                try:
-                    msg_raw = src.get("message", "")
-                    items = json.loads(msg_raw) if msg_raw else []
-                    for item in (items if isinstance(items, list) else [items]):
-                        if isinstance(item, dict) and item.get("jsonType") == "offerCard":
-                            offer_card = item.get("offerCard") or item
-                            break
-                except Exception:
-                    pass
+                if src.get("messageType", "TEXT").upper() == "JSON":
+                    try:
+                        msg_raw = src.get("message", "")
+                        items = json.loads(msg_raw) if msg_raw else []
+                        for item in (items if isinstance(items, list) else [items]):
+                            if isinstance(item, dict) and item.get("jsonType") == "offerCard":
+                                offer_card = item.get("offerCard") or item
+                                break
+                    except Exception:
+                        pass
 
-                # Fallback: use the first offerSoln entry
-                if offer_card is None and ctx.get("offerSoln"):
-                    offer_card = ctx["offerSoln"][0]
+                # 2. Fallback: use the first entry from the top-level offerSoln array
+                if offer_card is None:
+                    raw_offers = src.get("offerSoln") or ctx.get("offerSoln") or []
+                    if raw_offers:
+                        offer_card = raw_offers[0]
+
+                if offer_card is None:
+                    print(f"  [SKIP] no offer card available in {src_id}")
+                    continue
+
+                # For TEXT-fallback payloads, patch ctx so the summary input looks like
+                # the customer just selected the offer (messageType → synthetic JSON).
+                if src.get("messageType", "TEXT").upper() == "TEXT":
+                    ctx["messageType"] = "JSON"
+
+                # Offer_selected bypasses classification — Gemini generates the narrative
+                narrative = _generate_offer_narrative(client, ctx, offer_card)
+                if client.available:
+                    time.sleep(0.3)
 
                 start = to_summary_start_input(ctx, offer_card=offer_card)
+                # Inject the Gemini-generated narrative (transform hardcodes it for offer_selected)
+                start["conversationDesc"]["narrative"] = narrative
+                inp = to_summary_webhook_input(start)
+                # Per 'parsing last message before summary' n8n node: when selectedOffer is
+                # non-empty, userMessage must be this exact string (not the raw JSON message)
+                inp["userMessage"] = "The user select one of the offer provided by AI"
                 path_type = "offer_selected"
+            except Exception as exc:
+                print(f"  [SKIP] transform error: {exc}")
+                continue
+
+            if call_webhook and _N8N_BASE_URL:
+                try:
+                    actual = _call_webhook("summary", inp)
+                    expected = {
+                        "subject":             actual.get("subject", ""),
+                        "objective":           actual.get("objective", ""),
+                        "debt_cause":          actual.get("debt_cause", ""),
+                        "offer_suitability":   actual.get("offer_suitability", ""),
+                        "request_information": actual.get("request_information", ""),
+                        "summary":             actual.get("summary", ""),
+                    }
+                    if verbose:
+                        print(f"    ← summary webhook: subject={expected['subject'][:60]!r}")
+                except Exception as exc:
+                    print(f"    [warn] Summary webhook failed, using Gemini: {exc}")
+                    expected = _annotate_summary(client, inp, src, path_type)
             else:
-                # Staff contact / text routed to summary
-                start = to_summary_start_input(
-                    ctx,
-                    offer_card=None,
-                    narrative=ctx.get("narrative", ""),
+                expected = _annotate_summary(client, inp, src, path_type)
+
+            desc = f"[{mode}] {scenario} (offer_selected) route_to='summary' — Thai staff memo generation"
+            test_case = {
+                "testId": test_id,
+                "agentType": "summary",
+                "summaryPath": path_type,
+                "sourcePayload": src_id,
+                "scenario": scenario,
+                "messageMode": mode,
+                "guardrailCategory": src.get("guardrailCategory"),
+                "testDescription": desc,
+                "webhookPath": _WEBHOOK_PATH["summary"],
+                "input": inp,
+                "expectedOutput": expected,
+            }
+            path = _save_test(output_dir, test_id, test_case)
+            saved.append(path)
+            if verbose:
+                print(f"    → path=offer_selected    saved: {path.parent.name}/test.json")
+            if client.available and len(saved) < n:
+                time.sleep(0.5)
+
+    # ── PATH 2: staff_contact (at most 3 classification calls per test slot) ──
+    if staff_pool and n_staff > 0:
+        for slot in range(n_staff):
+            test_id = f"TC-{len(saved) + 1:04d}"
+
+            # Sample up to 3 candidate payloads, trying each once with classification.
+            # Prefer one that classification routes to "summary"; fall back to the last
+            # successfully-transformed candidate if none of the 3 match.
+            candidates = random.choices(staff_pool, k=3)
+            chosen: Optional[tuple] = None      # best match (routes to summary)
+            fallback_chosen: Optional[tuple] = None  # last valid transform
+
+            for attempt, (src_id, src) in enumerate(candidates, 1):
+                scenario = src.get("scenario", "")
+                mode = src.get("messageMode", "strict")
+                if verbose:
+                    print(
+                        f"  [{test_id}] attempt={attempt}/3 "
+                        f"src={src_id} scenario={scenario:<20} mode={mode}"
+                    )
+                try:
+                    ctx = prepare_context(src)
+                    narrative = ctx.get("narrative", "")
+                    cls_route_to = ""
+
+                    if call_webhook and _N8N_BASE_URL:
+                        try:
+                            cls_result = _call_webhook(
+                                "classification", to_classification_input(ctx)
+                            )
+                            narrative = cls_result.get("narrative", narrative)
+                            cls_route_to = cls_result.get("route_to", "")
+                            if verbose:
+                                print(f"    ← classification: route_to={cls_route_to!r}")
+                            if cls_route_to and cls_route_to != "summary":
+                                # Rewrite the user message to express a summary-triggering
+                                # intent (fee waiving / rate reduction / staff contact), then
+                                # call classification once more with the updated message.
+                                last_ai_content = ""
+                                last_ai = ctx.get("LastAImessage") or {}
+                                if isinstance(last_ai, dict):
+                                    last_ai_content = last_ai.get("content", "")
+                                rewritten = _rewrite_for_summary(
+                                    client, ctx["message"], last_ai_content
+                                )
+                                if rewritten != ctx["message"]:
+                                    if verbose:
+                                        print(
+                                            f"    routes to '{cls_route_to}' — rewriting "
+                                            f"userMessage for summary routing"
+                                        )
+                                    ctx = dict(ctx)  # shallow copy to avoid mutating source
+                                    ctx["message"] = rewritten
+                                    if client.available:
+                                        time.sleep(0.3)
+                                    try:
+                                        cls_result2 = _call_webhook(
+                                            "classification", to_classification_input(ctx)
+                                        )
+                                        narrative = cls_result2.get("narrative", narrative)
+                                        cls_route_to = cls_result2.get("route_to", "")
+                                        if verbose:
+                                            print(
+                                                f"    ← classification (rewrite): route_to={cls_route_to!r}"
+                                            )
+                                    except Exception as exc2:
+                                        print(f"    [warn] Classification rewrite call failed: {exc2}")
+                                if cls_route_to and cls_route_to != "summary":
+                                    fallback_chosen = (src_id, src, ctx, narrative, cls_route_to)
+                                    if verbose:
+                                        print(
+                                            f"    still '{cls_route_to}' after rewrite"
+                                            f" — {'retrying' if attempt < 3 else 'using as fallback'}"
+                                        )
+                                    continue  # try next candidate
+                        except Exception as exc:
+                            print(f"    [warn] Classification webhook failed: {exc}")
+
+                    chosen = (src_id, src, ctx, narrative, cls_route_to)
+                    break  # found a payload that routes to summary
+                except Exception as exc:
+                    print(f"    [warn] Transform error on attempt {attempt}: {exc}")
+                    continue
+
+            # Use the best match; if none routed to summary, accept the fallback
+            chosen = chosen or fallback_chosen
+            if chosen is None:
+                if verbose:
+                    print(f"  [{test_id}] [SKIP] all 3 candidates had transform errors")
+                continue
+            if chosen is fallback_chosen and verbose:
+                print(
+                    f"  [{test_id}] [warn] no candidate routed to 'summary'; "
+                    f"using fallback route_to={chosen[4]!r}"
                 )
-                path_type = "staff_contact"
 
-            inp = to_summary_webhook_input(start)
-        except Exception as exc:
-            print(f"  [SKIP] transform error: {exc}")
-            continue
+            src_id, src, ctx, narrative, cls_route_to = chosen
+            scenario = src.get("scenario", "")
+            mode = src.get("messageMode", "strict")
 
-        expected = _annotate_summary(client, inp, src, path_type)
+            try:
+                start = to_summary_start_input(ctx, offer_card=None, narrative=narrative)
+                inp = to_summary_webhook_input(start)
+            except Exception as exc:
+                print(f"  [SKIP] transform error: {exc}")
+                continue
 
-        desc = f"[{mode}] {scenario} ({path_type}) — Thai staff memo generation"
-        test_case = {
-            "testId": test_id,
-            "agentType": "summary",
-            "summaryPath": path_type,
-            "sourcePayload": src_id,
-            "scenario": scenario,
-            "messageMode": mode,
-            "guardrailCategory": src.get("guardrailCategory"),
-            "testDescription": desc,
-            "webhookPath": _WEBHOOK_PATH["summary"],
-            "input": inp,
-            "expectedOutput": expected,
-        }
+            if call_webhook and _N8N_BASE_URL:
+                try:
+                    actual = _call_webhook("summary", inp)
+                    expected = {
+                        "subject":             actual.get("subject", ""),
+                        "objective":           actual.get("objective", ""),
+                        "debt_cause":          actual.get("debt_cause", ""),
+                        "offer_suitability":   actual.get("offer_suitability", ""),
+                        "request_information": actual.get("request_information", ""),
+                        "summary":             actual.get("summary", ""),
+                    }
+                    if verbose:
+                        print(f"    ← summary webhook: subject={expected['subject'][:60]!r}")
+                except Exception as exc:
+                    print(f"    [warn] Summary webhook failed, using Gemini: {exc}")
+                    expected = _annotate_summary(client, inp, src, "staff_contact")
+            else:
+                expected = _annotate_summary(client, inp, src, "staff_contact")
 
-        path = _save_test(output_dir, test_id, test_case)
-        saved.append(path)
-        if verbose:
-            print(f"    → path={path_type:<15} saved: {path.parent.name}/test.json")
-
-        if client.available and i < n:
-            time.sleep(0.5)
+            route_part = f" route_to={cls_route_to!r}" if cls_route_to else ""
+            desc = f"[{mode}] {scenario} (staff_contact){route_part} — Thai staff memo generation"
+            test_case = {
+                "testId": test_id,
+                "agentType": "summary",
+                "summaryPath": "staff_contact",
+                "sourcePayload": src_id,
+                "scenario": scenario,
+                "messageMode": mode,
+                "guardrailCategory": src.get("guardrailCategory"),
+                "testDescription": desc,
+                "webhookPath": _WEBHOOK_PATH["summary"],
+                "input": inp,
+                "expectedOutput": expected,
+            }
+            path = _save_test(output_dir, test_id, test_case)
+            saved.append(path)
+            if verbose:
+                print(f"    → path=staff_contact     saved: {path.parent.name}/test.json")
+            if client.available and len(saved) < n:
+                time.sleep(0.5)
 
     return saved
 
@@ -785,6 +1246,7 @@ def generate_guardrail_tests(
     api_key: str = "",
     use_ai: bool = True,
     test_violation_replies: bool = True,
+    call_webhook: bool = True,
     verbose: bool = True,
 ) -> list[Path]:
     """
@@ -862,8 +1324,24 @@ def generate_guardrail_tests(
             print(f"  [SKIP] transform error: {exc}")
             continue
 
-        # Step 3: annotate expected output
-        expected = _annotate_output_guardrail(client, inp, src, use_violation)
+        # Step 3: get expected output — real webhook first, Gemini fallback
+        if call_webhook and _N8N_BASE_URL:
+            try:
+                actual = _call_webhook("output_guardrail", inp)
+                expected = {
+                    "fail_outputGuardrail": bool(actual.get("fail_outputGuardrail", False)),
+                    "preCheckViolations":   actual.get("preCheckViolations", ""),
+                    "personalData":         bool(actual.get("personalData", False)),
+                    "nsfw":                 bool(actual.get("nsfw", False)),
+                    "hallucinationHarm":    bool(actual.get("hallucinationHarm", False)),
+                }
+                if verbose:
+                    print(f"    ← webhook: fail={expected['fail_outputGuardrail']}")
+            except Exception as exc:
+                print(f"    [warn] Webhook call failed, falling back to Gemini: {exc}")
+                expected = _annotate_output_guardrail(client, inp, src, use_violation)
+        else:
+            expected = _annotate_output_guardrail(client, inp, src, use_violation)
 
         desc = (
             f"[{mode}{'/' + cat if cat else ''}] {scenario} — "
