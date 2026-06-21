@@ -1,0 +1,14 @@
+# Local config with secrets (copy config.example.json → config.json and fill in)
+config.json
+
+# Generated artifacts
+output/
+unit_tests/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Claude Code local settings
+.claude/settings.local.json

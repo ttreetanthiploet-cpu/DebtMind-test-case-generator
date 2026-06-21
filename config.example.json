@@ -1,0 +1,9 @@
+{
+  "n8n_base_url": "https://your-n8n-instance.example.com/webhook",
+  "webhook_paths": {
+    "classification":   "<uuid>",
+    "advisor":          "<uuid>",
+    "summary":          "<uuid>",
+    "output_guardrail": "<uuid>"
+  }
+}

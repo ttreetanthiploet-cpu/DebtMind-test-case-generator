@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "considerAccount": "",
+    "maxTerm": 120,
+    "maxPayment": 0,
+    "preference": "",
+    "narrative": "The user is asking for information about the 'Khun Soo Rao Chuay' program. The conversation is being routed to the education agent to provide an explanation.",
+    "sessionId": "session-549725",
+    "createdAt": "2026-06-21T08:53:31.236Z",
+    "updatedAt": "2026-06-21T09:04:22.373Z"
+  },
+  {
+    "id": 2,
+    "considerAccount": "xxxxxx501645,xxxxxx501646",
+    "maxTerm": 360,
+    "maxPayment": 800,
+    "preference": "{\"DebtSituation\":\"DebtBurden\"}",
+    "narrative": "The advisor presented two TDR plans with an 800 baht monthly installment. The customer has reviewed the options and now wishes to modify the plan to pay a higher monthly amount. The conversation is being routed back to the advisor to generate a new plan.",
+    "sessionId": "session-636269",
+    "createdAt": "2026-06-21T09:59:54.838Z",
+    "updatedAt": "2026-06-21T10:03:37.032Z"
+  },
+  {
+    "id": 3,
+    "considerAccount": "xxxxxx500362,xxxxxx500364,xxxxxx500363",
+    "maxTerm": 360,
+    "maxPayment": 46000,
+    "preference": "{\"DebtSituation\":\"DebtBurden\"}",
+    "narrative": "The user wants to restructure their debt.",
+    "sessionId": "session-784496",
+    "createdAt": "2026-06-21T10:20:06.566Z",
+    "updatedAt": "2026-06-21T10:20:06.566Z"
+  },
+  {
+    "id": 4,
+    "considerAccount": "xxxxxx503620,xxxxxx503619",
+    "maxTerm": 360,
+    "maxPayment": 10400,
+    "preference": "{\"DebtSituation\":\"DebtBurden\"}",
+    "narrative": "The user wants to restructure their personal loan.",
+    "sessionId": "session-111066",
+    "createdAt": "2026-06-21T10:29:14.594Z",
+    "updatedAt": "2026-06-21T10:29:14.594Z"
+  },
+  {
+    "id": 5,
+    "considerAccount": "xxxxxx503619",
+    "maxTerm": 120,
+    "maxPayment": 500,
+    "preference": "{\"DebtSituation\":\"DebtBurden\",\"refPlanID\":\"TDR0220260621103712\"}",
+    "narrative": "The advisor presented two TDR plan options. The customer has responded by stating they are willing to pay more per installment to clear the debt faster. The conversation is being routed back to the advisor to adjust the recommendation.",
+    "sessionId": "session-578921",
+    "createdAt": "2026-06-21T10:30:31.611Z",
+    "updatedAt": "2026-06-21T10:37:31.650Z"
+  },
+  {
+    "id": 6,
+    "considerAccount": "",
+    "maxTerm": 120,
+    "maxPayment": 0,
+    "preference": "{\"DebtSituation\":\"DebtBurden\"}",
+    "narrative": "The customer expressed their interests to find solution to the debt issue but they do not explicitly provide the information on the accoint",
+    "sessionId": "session-513146",
+    "createdAt": "2026-06-21T10:38:22.047Z",
+    "updatedAt": "2026-06-21T10:45:46.466Z"
+  }
+]

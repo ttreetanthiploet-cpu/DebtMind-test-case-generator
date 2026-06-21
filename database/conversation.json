@@ -1,0 +1,442 @@
+[
+  {
+    "id": 1,
+    "sessionId": "session-549725",
+    "role": "USER",
+    "content": "ต้องการปรับโครงสร้างสินเชื่อส่วนบุคคล",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T08:53:22.364Z",
+    "updatedAt": "2026-06-21T08:53:22.364Z"
+  },
+  {
+    "id": 2,
+    "sessionId": "session-549725",
+    "role": "BOT",
+    "content": "[{\"jsonType\": \"offerCard\", \"planId\": \"TDR0220260621085331\", \"offerCard\": {\"plan_id\": \"TDR0220260621085331\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่โดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503379\", \"cnt_eligible\": \"1\", \"cnt_total\": \"1\", \"total_os\": \"65,828.63\", \"prev_inst\": \"5,000\", \"new_inst\": \"4,500\", \"step_label\": \"\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"16 → 18 งวด\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"int_total_change\": \"10,206.39 → 11,517.57 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503379\", \"acc_name\": \"สินเชื่อส่วนบุคคล\", \"os\": \"65,828.63\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"16 → 18 งวด\", \"inst_old\": \"\", \"inst_change\": \"5,000 → 4,500 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"10,206.39 → 11,517.57 บาท\", \"inelig_note\": \"\"}]}}, {\"jsonType\": \"offerCard\", \"planId\": \"TDR0320260621085331\", \"offerCard\": {\"plan_id\": \"TDR0320260621085331\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่และมีค่างวดชำระส่วนสุดท้าย\", \"ncb_badge\": \"\", \"accounts\": \"xxxxxx503379\", \"cnt_eligible\": \"1\", \"cnt_total\": \"1\", \"total_os\": \"65,828.63\", \"prev_inst\": \"5,000\", \"new_inst\": \"4,500\", \"step_label\": \"\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"int_total_change\": \"10,206.39 → 11,406.36 บาท\", \"balloon_rows\": [\"xxxxxx503379|16|5,234.99\"], \"notes\": [\"มาตรการนี้สำหรับผู้ที่ไม่เคยมีประวัติค้างชำระกับธนาคารเท่านั้น หากเจ้าหน้าที่ตรวจพบประวัติการค้างชำระอาจมีการเสนอแนวทางมาตรการอื่น\"], \"account_details\": [{\"acc_no\": \"xxxxxx503379\", \"acc_name\": \"สินเชื่อส่วนบุคคล\", \"os\": \"65,828.63\", \"int_rate\": \"22.00\", \"term_old\": \"16 งวด\", \"term_change\": \"\", \"inst_old\": \"\", \"inst_change\": \"5,000 → 4,500 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"5,234.99 บาท\", \"int_total_old\": \"\", \"int_total_change\": \"10,206.39 → 11,406.36 บาท\", \"inelig_note\": \"\"}]}}]",
+    "agentUsed": "Advisor",
+    "type": "json",
+    "createdAt": "2026-06-21T08:53:31.234Z",
+    "updatedAt": "2026-06-21T08:53:31.234Z"
+  },
+  {
+    "id": 3,
+    "sessionId": "session-549725",
+    "role": "USER",
+    "content": "{\"jsonType\":\"offerCard\",\"planId\":\"TDR0220260621085331\",\"offerCard\":{\"plan_id\":\"TDR0220260621085331\",\"plan_desc\":\"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่โดยขยายอายุสัญญา\",\"ncb_badge\":\"มีผลต่อเครดิตบูโร\",\"accounts\":\"xxxxxx503379\",\"cnt_eligible\":\"1\",\"cnt_total\":\"1\",\"total_os\":\"65,828.63\",\"prev_inst\":\"5,000\",\"new_inst\":\"4,500\",\"step_label\":\"\",\"source_desc\":\"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\",\"int_rate_new\":\"\",\"term_actual_old\":\"\",\"term_remain_new\":\"\",\"term_change\":\"16 → 18 งวด\",\"inst_y2y3\":\"\",\"inst_after_3m\":\"\",\"int_total_change\":\"10,206.39 → 11,517.57 บาท\",\"balloon_rows\":[],\"notes\":[\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"],\"account_details\":[{\"acc_no\":\"xxxxxx503379\",\"acc_name\":\"สินเชื่อส่วนบุคคล\",\"os\":\"65,828.63\",\"int_rate\":\"22.00\",\"term_old\":\"\",\"term_change\":\"16 → 18 งวด\",\"inst_old\":\"\",\"inst_change\":\"5,000 → 4,500 บาท/งวด\",\"inst_change_y1\":\"\",\"inst_y2y3\":\"\",\"inst_after_3m\":\"\",\"inst_new_loan\":\"\",\"balloon_payment\":\"\",\"int_total_old\":\"\",\"int_total_change\":\"10,206.39 → 11,517.57 บาท\",\"inelig_note\":\"\"}]}}",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T09:02:38.460Z",
+    "updatedAt": "2026-06-21T09:02:38.460Z"
+  },
+  {
+    "id": 4,
+    "sessionId": "session-549725",
+    "role": "BOT",
+    "content": "ขอบคุณค่ะ ขณะนี้ระบบได้ดำเนินการส่งเรื่องไปยังเจ้าหน้าที่ เจ้าหน้าที่จะติดต่อท่านกลับไปภายใน 3 วัน",
+    "agentUsed": "Summary",
+    "type": "text",
+    "createdAt": "2026-06-21T09:02:46.557Z",
+    "updatedAt": "2026-06-21T09:02:46.557Z"
+  },
+  {
+    "id": 5,
+    "sessionId": "session-549725",
+    "role": "USER",
+    "content": "คุณสู้เราช่วยคืออะไร",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T09:04:06.945Z",
+    "updatedAt": "2026-06-21T09:04:06.945Z"
+  },
+  {
+    "id": 6,
+    "sessionId": "session-549725",
+    "role": "BOT",
+    "content": "โครงการ “คุณสู้ เราช่วย” เป็นมาตรการชั่วคราวที่ธนาคารแห่งประเทศไทยร่วมกับหน่วยงานภาครัฐและสถาบันการเงิน เพื่อช่วยเหลือลูกหนี้รายย่อยและ SMEs เฉพาะกลุ่ม โดยครอบคลุมลูกหนี้ธนาคารพาณิชย์ สถาบันการเงินเฉพาะกิจ และ Non-Bank ที่เป็นบริษัทในกลุ่มธุรกิจทางการเงินของธนาคารพาณิชย์ <cite>khunsoo-v3p0.txt, line 1-6</cite>",
+    "agentUsed": "education",
+    "type": "text",
+    "createdAt": "2026-06-21T09:04:22.371Z",
+    "updatedAt": "2026-06-21T09:04:22.371Z"
+  },
+  {
+    "id": 7,
+    "sessionId": "session-636269",
+    "role": "USER",
+    "content": "สอบถามข้อมูลโครงการภาครัฐ เช่น โครงการคุณสู้เราช่วย และโครงการปิดหนี้ไวไปต่อได้",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T09:59:37.969Z",
+    "updatedAt": "2026-06-21T09:59:37.969Z"
+  },
+  {
+    "id": 8,
+    "sessionId": "session-636269",
+    "role": "BOT",
+    "content": "**โครงการปิดหนี้ไวไปต่อได้**\nเป็นโครงการของธนาคารแห่งประเทศไทยเพื่อช่วยเหลือลูกหนี้รายย่อยที่มีภาระหนี้ NPL ไม่สูง โดยบริหารจัดการหนี้แบบรวมศูนย์เพื่อให้กลับมาชำระหนี้ได้ มีประวัติที่ดีขึ้น และเข้าถึงสินเชื่อในระบบได้ โดยสามารถติดต่อได้ที่ธนาคารกรุงไทยทุกสาขา หรือสอบถามผ่าน ธปท. และ SAM ตั้งแต่วันที่ 5 ม.ค. 69 เป็นต้นไป <cite>ktb-info-1576-v3p1.txt, line 31-36</cite>\n\n**โครงการคุณสู้เราช่วย**\nไม่พบข้อมูลโครงการคุณสู้เราช่วย",
+    "agentUsed": "education",
+    "type": "text",
+    "createdAt": "2026-06-21T09:59:54.836Z",
+    "updatedAt": "2026-06-21T09:59:54.836Z"
+  },
+  {
+    "id": 9,
+    "sessionId": "session-636269",
+    "role": "USER",
+    "content": "เป็นควยไร แค่นี้หาไม่เจอ",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:00:38.877Z",
+    "updatedAt": "2026-06-21T10:00:38.877Z"
+  },
+  {
+    "id": 10,
+    "sessionId": "session-636269",
+    "role": "BOT",
+    "content": "ขออภัยค่ะ น้องฟินไม่เข้าใจความต้องการของท่านค่ะ ตอนนี้น้องฟินสามารถให้ข้อมูลเกี่ยวกับแนวทางการแก้ปัญหาหนี้และนำเสนอแนวทางการจัดการหนี้ที่เหมาะสมกับสถานะสินเชื่อของลูกค้าเท่านั้น กรุณาพิมพ์ความต้องการด้านล่างได้เลยค่ะ",
+    "agentUsed": "unknown",
+    "type": "text",
+    "createdAt": "2026-06-21T10:00:39.493Z",
+    "updatedAt": "2026-06-21T10:00:39.493Z"
+  },
+  {
+    "id": 11,
+    "sessionId": "session-636269",
+    "role": "USER",
+    "content": "สัส ไม่ต้องมาทำไม่รูเ",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:01:06.787Z",
+    "updatedAt": "2026-06-21T10:01:06.787Z"
+  },
+  {
+    "id": 12,
+    "sessionId": "session-636269",
+    "role": "BOT",
+    "content": "ขออภัยค่ะ น้องฟินไม่เข้าใจความต้องการของท่านค่ะ ตอนนี้น้องฟินสามารถให้ข้อมูลเกี่ยวกับแนวทางการแก้ปัญหาหนี้และนำเสนอแนวทางการจัดการหนี้ที่เหมาะสมกับสถานะสินเชื่อของลูกค้าเท่านั้น กรุณาพิมพ์ความต้องการด้านล่างได้เลยค่ะ",
+    "agentUsed": "unknown",
+    "type": "text",
+    "createdAt": "2026-06-21T10:01:10.524Z",
+    "updatedAt": "2026-06-21T10:01:10.524Z"
+  },
+  {
+    "id": 13,
+    "sessionId": "session-636269",
+    "role": "USER",
+    "content": "อยากแก้ปัญหาหนี้จัง",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:01:47.324Z",
+    "updatedAt": "2026-06-21T10:01:47.324Z"
+  },
+  {
+    "id": 14,
+    "sessionId": "session-636269",
+    "role": "BOT",
+    "content": "น้องฟิน ยินดีให้บริการคำปรึกษาแก้ปัญหาหนี้ค่ะ เพื่อให้ระบบสามารถวิเคราะห์แนวทางการแก้ปัญหาหนี้ได้ถูกต้อง กรุณาระบุความสามารถในการชำระสินเชื่อและระบุบัญชีที่ลูกค้าต้องการ จากบัญชีสินเชื่อธนาคารกรุงไทยที่พบบนระบบ ดังนี้ค่ะ\n\nบัญชีที่ 1\nเลขที่บัญชี: xxxxxx501645\nประเภทสินเชื่อ: สินเชื่ออเนกประสงค์ 5 Plus\nยอดชำระคงเหลือ: 12,621.6 บาท\nอัตราผ่อนชำระ: 1,000 บาท/เดือน\nระยะเวลาคงเหลือ: 14 เดือน\nสถานะ: มีการค้างชำระ 5 งวด\n\nบัญชีที่ 2\nเลขที่บัญชี: xxxxxx501646\nประเภทสินเชื่อ: สินเชื่ออเนกประสงค์ 5 Plus\nยอดชำระคงเหลือ: 12,846.32 บาท\nอัตราผ่อนชำระ: 600 บาท/เดือน\nระยะเวลาคงเหลือ: 25 เดือน\nสถานะ: มีการค้างชำระ 5 งวด\n\nสรุปภาพรวมสินเชื่อ\nจำนวนบัญชีทั้งหมด: 2 บัญชี\nอัตราผ่อนชำระรวม: 1,600 บาท/เดือน",
+    "agentUsed": "Advisor",
+    "type": "text",
+    "createdAt": "2026-06-21T10:01:55.705Z",
+    "updatedAt": "2026-06-21T10:01:55.705Z"
+  },
+  {
+    "id": 15,
+    "sessionId": "session-636269",
+    "role": "USER",
+    "content": "สองบัญชี อยากผ่อนเหลือแค่ 800 ได้ไหม",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:02:17.069Z",
+    "updatedAt": "2026-06-21T10:02:17.069Z"
+  },
+  {
+    "id": 16,
+    "sessionId": "session-636269",
+    "role": "BOT",
+    "content": "[{\"jsonType\": \"offerCard\", \"planId\": \"TDR0220260621100229\", \"offerCard\": {\"plan_id\": \"TDR0220260621100229\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่โดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx501645, xxxxxx501646\", \"cnt_eligible\": \"2\", \"cnt_total\": \"2\", \"total_os\": \"25,467.92\", \"prev_inst\": \"1,600\", \"new_inst\": \"800\", \"step_label\": \"\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"25 → 41 งวด\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"int_total_change\": \"3,133.54 → 6,553.31 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx501645\", \"acc_name\": \"สินเชื่ออเนกประสงค์ 5 Plus\", \"os\": \"12,621.60\", \"int_rate\": \"14.00\", \"term_old\": \"\", \"term_change\": \"14 → 41 งวด\", \"inst_old\": \"\", \"inst_change\": \"1,000 → 396 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,112.56 → 3,247.74 บาท\", \"inelig_note\": \"\"}, {\"acc_no\": \"xxxxxx501646\", \"acc_name\": \"สินเชื่ออเนกประสงค์ 5 Plus\", \"os\": \"12,846.32\", \"int_rate\": \"14.00\", \"term_old\": \"\", \"term_change\": \"25 → 41 งวด\", \"inst_old\": \"\", \"inst_change\": \"600 → 404 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"2,020.98 → 3,305.57 บาท\", \"inelig_note\": \"\"}]}}, {\"jsonType\": \"offerCard\", \"planId\": \"TDR0420260621100229\", \"offerCard\": {\"plan_id\": \"TDR0420260621100229\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระแบบขั้นบันไดโดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx501645, xxxxxx501646\", \"cnt_eligible\": \"2\", \"cnt_total\": \"2\", \"total_os\": \"25,467.92\", \"prev_inst\": \"1,600\", \"new_inst\": \"800\", \"step_label\": \"ปีแรก\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"25 → 16 งวด\", \"inst_y2y3\": \"5,850 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"int_total_change\": \"3,133.54 → 3,653.91 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx501645\", \"acc_name\": \"สินเชื่ออเนกประสงค์ 5 Plus\", \"os\": \"12,621.60\", \"int_rate\": \"14.00\", \"term_old\": \"\", \"term_change\": \"14 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"1,000 → 396 บาท/งวด\", \"inst_y2y3\": \"2,899 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,112.56 → 1,810.83 บาท\", \"inelig_note\": \"\"}, {\"acc_no\": \"xxxxxx501646\", \"acc_name\": \"สินเชื่ออเนกประสงค์ 5 Plus\", \"os\": \"12,846.32\", \"int_rate\": \"14.00\", \"term_old\": \"\", \"term_change\": \"25 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"600 → 404 บาท/งวด\", \"inst_y2y3\": \"2,951 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"2,020.98 → 1,843.07 บาท\", \"inelig_note\": \"\"}]}}]",
+    "agentUsed": "Advisor",
+    "type": "json",
+    "createdAt": "2026-06-21T10:02:29.701Z",
+    "updatedAt": "2026-06-21T10:02:29.701Z"
+  },
+  {
+    "id": 17,
+    "sessionId": "session-636269",
+    "role": "USER",
+    "content": "เปลี่ยนใจละ อยากผ่อนมากกว่านี้",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:03:06.214Z",
+    "updatedAt": "2026-06-21T10:03:06.214Z"
+  },
+  {
+    "id": 18,
+    "sessionId": "session-636269",
+    "role": "BOT",
+    "content": "แผนหมายเลข - มียอดผ่อนชำระ 0 บาทต่อเดือน ทำให้ดอกเบี้ยรวมสูงขึ้น หากต้องการลดดอกเบี้ยรวม ลูกค้าสามารถเพิ่มยอดผ่อนชำระได้ค่ะ อัตราผ่อนชำระยิ่งสูง ดอกเบี้ยรวมก็จะยิ่งลดลงค่ะ น้องฟินขอแนะนำที่ 0 บาทต่อเดือน ดูไหมคะ หรือระบุยอดที่ต้องการได้เลยค่ะ",
+    "agentUsed": "Advisor",
+    "type": "text",
+    "createdAt": "2026-06-21T10:03:37.031Z",
+    "updatedAt": "2026-06-21T10:03:37.031Z"
+  },
+  {
+    "id": 19,
+    "sessionId": "session-784496",
+    "role": "USER",
+    "content": "ต้องการปรับโครงสร้างหนี้",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:19:59.302Z",
+    "updatedAt": "2026-06-21T10:19:59.302Z"
+  },
+  {
+    "id": 20,
+    "sessionId": "session-784496",
+    "role": "BOT",
+    "content": "[{\"jsonType\": \"offerCard\", \"planId\": \"TDR0120260621102006\", \"offerCard\": {\"plan_id\": \"TDR0120260621102006\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่โดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx500362, xxxxxx500363, xxxxxx500364\", \"cnt_eligible\": \"1\", \"cnt_total\": \"3\", \"total_os\": \"2,319,714.83\", \"prev_inst\": \"46,000\", \"new_inst\": \"45,300\", \"step_label\": \"\", \"source_desc\": \"ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"240 → 240 งวด\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"int_total_change\": \"1,310,757.36 → 1,316,077.83 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx500362\", \"acc_name\": \"สินเชื่อ Home for Cash\", \"os\": \"1,196,922.30\", \"int_rate\": \"7.00\", \"term_old\": \"37 งวด\", \"term_change\": \"\", \"inst_old\": \"\", \"inst_change\": \"37,000 → 37,000 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"133,380.10 บาท\", \"int_total_change\": \"\", \"inelig_note\": \"บัญชีนี้ไม่เข้าเกณฑ์เข้าร่วมมาตรการ จึงคงเงื่อนไขการชำระตามเดิม\"}, {\"acc_no\": \"xxxxxx500364\", \"acc_name\": \"สินเชื่อบ้านกรุงไทย\", \"os\": \"1,111,486.09\", \"int_rate\": \"7.00\", \"term_old\": \"240 งวด\", \"term_change\": \"\", \"inst_old\": \"\", \"inst_change\": \"8,000 → 8,000 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"1,176,049.80 บาท\", \"int_total_change\": \"\", \"inelig_note\": \"บัญชีนี้ไม่เข้าเกณฑ์เข้าร่วมมาตรการ จึงคงเงื่อนไขการชำระตามเดิม\"}, {\"acc_no\": \"xxxxxx500363\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,306.44\", \"int_rate\": \"20.00\", \"term_old\": \"\", \"term_change\": \"13 → 60 งวด\", \"inst_old\": \"\", \"inst_change\": \"1,000 → 300 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,327.46 → 6,647.92 บาท\", \"inelig_note\": \"\"}]}}]",
+    "agentUsed": "Advisor",
+    "type": "json",
+    "createdAt": "2026-06-21T10:20:06.565Z",
+    "updatedAt": "2026-06-21T10:20:06.565Z"
+  },
+  {
+    "id": 21,
+    "sessionId": "session-111066",
+    "role": "USER",
+    "content": "ต้องการปรับโครงสร้าง สินเชื่อส่วนบุคคล",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:29:06.209Z",
+    "updatedAt": "2026-06-21T10:29:06.209Z"
+  },
+  {
+    "id": 22,
+    "sessionId": "session-111066",
+    "role": "BOT",
+    "content": "[{\"jsonType\": \"offerCard\", \"planId\": \"TDR0220260621102914\", \"offerCard\": {\"plan_id\": \"TDR0220260621102914\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่โดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503619, xxxxxx503620\", \"cnt_eligible\": \"2\", \"cnt_total\": \"2\", \"total_os\": \"29,894.91\", \"prev_inst\": \"1,900\", \"new_inst\": \"1,710\", \"step_label\": \"\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"18 → 21 งวด\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"int_total_change\": \"3,832.63 → 4,334.33 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503620\", \"acc_name\": \"สินเชื่อ 100K\", \"os\": \"17,983.94\", \"int_rate\": \"12.00\", \"term_old\": \"\", \"term_change\": \"18 → 21 งวด\", \"inst_old\": \"\", \"inst_change\": \"900 → 966 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"2,180.13 → 2,016.63 บาท\", \"inelig_note\": \"\"}, {\"acc_no\": \"xxxxxx503619\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,910.97\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"14 → 20 งวด\", \"inst_old\": \"\", \"inst_change\": \"1,000 → 744 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,652.49 → 2,317.70 บาท\", \"inelig_note\": \"\"}]}}, {\"jsonType\": \"offerCard\", \"planId\": \"TDR0420260621102914\", \"offerCard\": {\"plan_id\": \"TDR0420260621102914\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระแบบขั้นบันไดโดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503619, xxxxxx503620\", \"cnt_eligible\": \"2\", \"cnt_total\": \"2\", \"total_os\": \"29,894.91\", \"prev_inst\": \"1,900\", \"new_inst\": \"1,710\", \"step_label\": \"ปีแรก\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"18 → 16 งวด\", \"inst_y2y3\": \"3,510 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"int_total_change\": \"3,832.63 → 3,980.52 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503620\", \"acc_name\": \"สินเชื่อ 100K\", \"os\": \"17,983.94\", \"int_rate\": \"12.00\", \"term_old\": \"\", \"term_change\": \"18 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"900 → 966 บาท/งวด\", \"inst_y2y3\": \"2,147 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"2,180.13 → 1,817.38 บาท\", \"inelig_note\": \"\"}, {\"acc_no\": \"xxxxxx503619\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,910.97\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"14 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"1,000 → 744 บาท/งวด\", \"inst_y2y3\": \"1,363 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,652.49 → 2,163.14 บาท\", \"inelig_note\": \"\"}]}}]",
+    "agentUsed": "Advisor",
+    "type": "json",
+    "createdAt": "2026-06-21T10:29:14.592Z",
+    "updatedAt": "2026-06-21T10:29:14.592Z"
+  },
+  {
+    "id": 23,
+    "sessionId": "session-578921",
+    "role": "USER",
+    "content": "ต้องการปรับโครงสร้างสินเชื่อส่วนบุคคล",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:30:22.868Z",
+    "updatedAt": "2026-06-21T10:30:22.868Z"
+  },
+  {
+    "id": 24,
+    "sessionId": "session-578921",
+    "role": "BOT",
+    "content": "[{\"jsonType\": \"offerCard\", \"planId\": \"TDR0220260621103031\", \"offerCard\": {\"plan_id\": \"TDR0220260621103031\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่โดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503619, xxxxxx503620\", \"cnt_eligible\": \"2\", \"cnt_total\": \"2\", \"total_os\": \"29,894.91\", \"prev_inst\": \"1,900\", \"new_inst\": \"1,710\", \"step_label\": \"\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"18 → 21 งวด\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"int_total_change\": \"3,832.63 → 4,334.33 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503620\", \"acc_name\": \"สินเชื่อ 100K\", \"os\": \"17,983.94\", \"int_rate\": \"12.00\", \"term_old\": \"\", \"term_change\": \"18 → 21 งวด\", \"inst_old\": \"\", \"inst_change\": \"900 → 966 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"2,180.13 → 2,016.63 บาท\", \"inelig_note\": \"\"}, {\"acc_no\": \"xxxxxx503619\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,910.97\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"14 → 20 งวด\", \"inst_old\": \"\", \"inst_change\": \"1,000 → 744 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,652.49 → 2,317.70 บาท\", \"inelig_note\": \"\"}]}}, {\"jsonType\": \"offerCard\", \"planId\": \"TDR0420260621103031\", \"offerCard\": {\"plan_id\": \"TDR0420260621103031\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระแบบขั้นบันไดโดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503619, xxxxxx503620\", \"cnt_eligible\": \"2\", \"cnt_total\": \"2\", \"total_os\": \"29,894.91\", \"prev_inst\": \"1,900\", \"new_inst\": \"1,710\", \"step_label\": \"ปีแรก\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"18 → 16 งวด\", \"inst_y2y3\": \"3,510 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"int_total_change\": \"3,832.63 → 3,980.52 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503620\", \"acc_name\": \"สินเชื่อ 100K\", \"os\": \"17,983.94\", \"int_rate\": \"12.00\", \"term_old\": \"\", \"term_change\": \"18 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"900 → 966 บาท/งวด\", \"inst_y2y3\": \"2,147 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"2,180.13 → 1,817.38 บาท\", \"inelig_note\": \"\"}, {\"acc_no\": \"xxxxxx503619\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,910.97\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"14 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"1,000 → 744 บาท/งวด\", \"inst_y2y3\": \"1,363 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,652.49 → 2,163.14 บาท\", \"inelig_note\": \"\"}]}}]",
+    "agentUsed": "Advisor",
+    "type": "json",
+    "createdAt": "2026-06-21T10:30:31.609Z",
+    "updatedAt": "2026-06-21T10:30:31.609Z"
+  },
+  {
+    "id": 25,
+    "sessionId": "session-578921",
+    "role": "USER",
+    "content": "{\"jsonType\":\"offerCard\",\"planId\":\"TDR0420260621103031\",\"offerCard\":{\"plan_id\":\"TDR0420260621103031\",\"plan_desc\":\"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระแบบขั้นบันไดโดยขยายอายุสัญญา\",\"ncb_badge\":\"มีผลต่อเครดิตบูโร\",\"accounts\":\"xxxxxx503619, xxxxxx503620\",\"cnt_eligible\":\"2\",\"cnt_total\":\"2\",\"total_os\":\"29,894.91\",\"prev_inst\":\"1,900\",\"new_inst\":\"1,710\",\"step_label\":\"ปีแรก\",\"source_desc\":\"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\",\"int_rate_new\":\"\",\"term_actual_old\":\"\",\"term_remain_new\":\"\",\"term_change\":\"18 → 16 งวด\",\"inst_y2y3\":\"3,510 และ 0 บาท/งวด\",\"inst_after_3m\":\"\",\"int_total_change\":\"3,832.63 → 3,980.52 บาท\",\"balloon_rows\":[],\"notes\":[\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"],\"account_details\":[{\"acc_no\":\"xxxxxx503620\",\"acc_name\":\"สินเชื่อ 100K\",\"os\":\"17,983.94\",\"int_rate\":\"12.00\",\"term_old\":\"\",\"term_change\":\"18 → 16 งวด\",\"inst_old\":\"\",\"inst_change\":\"\",\"inst_change_y1\":\"900 → 966 บาท/งวด\",\"inst_y2y3\":\"2,147 และ 0 บาท/งวด\",\"inst_after_3m\":\"\",\"inst_new_loan\":\"\",\"balloon_payment\":\"\",\"int_total_old\":\"\",\"int_total_change\":\"2,180.13 → 1,817.38 บาท\",\"inelig_note\":\"\"},{\"acc_no\":\"xxxxxx503619\",\"acc_name\":\"สินเชื่อกรุงไทยใจป้ำ\",\"os\":\"11,910.97\",\"int_rate\":\"22.00\",\"term_old\":\"\",\"term_change\":\"14 → 16 งวด\",\"inst_old\":\"\",\"inst_change\":\"\",\"inst_change_y1\":\"1,000 → 744 บาท/งวด\",\"inst_y2y3\":\"1,363 และ 0 บาท/งวด\",\"inst_after_3m\":\"\",\"inst_new_loan\":\"\",\"balloon_payment\":\"\",\"int_total_old\":\"\",\"int_total_change\":\"1,652.49 → 2,163.14 บาท\",\"inelig_note\":\"\"}]}}",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:36:06.184Z",
+    "updatedAt": "2026-06-21T10:36:06.184Z"
+  },
+  {
+    "id": 26,
+    "sessionId": "session-578921",
+    "role": "BOT",
+    "content": "ขอบคุณค่ะ ขณะนี้ระบบได้ดำเนินการส่งเรื่องไปยังเจ้าหน้าที่ เจ้าหน้าที่จะติดต่อท่านกลับไปภายใน 3 วัน หากต้องการให้น้องฟินดูแดเรื่องใดเพิ่มเติม สามารถแจ้งน้องฟินได้เลยนะคะ",
+    "agentUsed": "Summary",
+    "type": "text",
+    "createdAt": "2026-06-21T10:36:14.005Z",
+    "updatedAt": "2026-06-21T10:36:14.005Z"
+  },
+  {
+    "id": 27,
+    "sessionId": "session-578921",
+    "role": "USER",
+    "content": "ต้องการค่างวดที่น้อยกว่านี้",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:36:15.075Z",
+    "updatedAt": "2026-06-21T10:36:15.075Z"
+  },
+  {
+    "id": 28,
+    "sessionId": "session-578921",
+    "role": "BOT",
+    "content": "น้องฟิน ยินดีให้บริการคำปรึกษาแก้ปัญหาหนี้ค่ะ เพื่อให้ระบบสามารถวิเคราะห์แนวทางการแก้ปัญหาหนี้ได้ถูกต้อง กรุณาระบุความสามารถในการชำระสินเชื่อและระบุบัญชีที่ลูกค้าต้องการ จากบัญชีสินเชื่อธนาคารกรุงไทยที่พบบนระบบ ดังนี้ค่ะ\n\nบัญชีที่ 1\nเลขที่บัญชี: xxxxxx503620\nประเภทสินเชื่อ: สินเชื่อ 100K\nยอดชำระคงเหลือ: 17,983.94 บาท\nอัตราผ่อนชำระ: 900 บาท/เดือน\nระยะเวลาคงเหลือ: 18 เดือน\nสถานะ: มีการค้างชำระ 2 งวด\n\nบัญชีที่ 2\nเลขที่บัญชี: xxxxxx503619\nประเภทสินเชื่อ: สินเชื่อกรุงไทยใจป้ำ\nยอดชำระคงเหลือ: 11,910.97 บาท\nอัตราผ่อนชำระ: 1,000 บาท/เดือน\nระยะเวลาคงเหลือ: 14 เดือน\nสถานะ: มีการค้างชำระ 2 งวด\n\nบัญชีที่ 3\nเลขที่บัญชี: xxxxxx503618\nประเภทสินเชื่อ: สินเชื่อบ้านกรุงไทย\nยอดชำระคงเหลือ: 1,081,785.21 บาท\nอัตราผ่อนชำระ: 8,500 บาท/เดือน\nระยะเวลาคงเหลือ: 255 เดือน\nสถานะ: มีการค้างชำระ 2 งวด\n\nสรุปภาพรวมสินเชื่อ\nจำนวนบัญชีทั้งหมด: 3 บัญชี\nอัตราผ่อนชำระรวม: 10,400 บาท/เดือน",
+    "agentUsed": "Advisor",
+    "type": "text",
+    "createdAt": "2026-06-21T10:36:32.863Z",
+    "updatedAt": "2026-06-21T10:36:32.863Z"
+  },
+  {
+    "id": 29,
+    "sessionId": "session-578921",
+    "role": "USER",
+    "content": "กรุงไทยใจป้ำ ผ่อนเดือนละ 500 ได้ไหม",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:37:01.124Z",
+    "updatedAt": "2026-06-21T10:37:01.124Z"
+  },
+  {
+    "id": 30,
+    "sessionId": "session-578921",
+    "role": "BOT",
+    "content": "[{\"jsonType\": \"offerCard\", \"planId\": \"TDR0220260621103712\", \"offerCard\": {\"plan_id\": \"TDR0220260621103712\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่โดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503619\", \"cnt_eligible\": \"1\", \"cnt_total\": \"1\", \"total_os\": \"11,910.97\", \"prev_inst\": \"1,000\", \"new_inst\": \"500\", \"step_label\": \"\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"14 → 32 งวด\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"int_total_change\": \"1,652.49 → 3,887.90 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503619\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,910.97\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"14 → 32 งวด\", \"inst_old\": \"\", \"inst_change\": \"1,000 → 500 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,652.49 → 3,887.90 บาท\", \"inelig_note\": \"\"}]}}, {\"jsonType\": \"offerCard\", \"planId\": \"TDR0420260621103712\", \"offerCard\": {\"plan_id\": \"TDR0420260621103712\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระแบบขั้นบันไดโดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503619\", \"cnt_eligible\": \"1\", \"cnt_total\": \"1\", \"total_os\": \"11,910.97\", \"prev_inst\": \"1,000\", \"new_inst\": \"500\", \"step_label\": \"ปีแรก\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"14 → 16 งวด\", \"inst_y2y3\": \"2,300 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"int_total_change\": \"1,652.49 → 2,617.55 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503619\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,910.97\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"14 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"1,000 → 500 บาท/งวด\", \"inst_y2y3\": \"2,300 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,652.49 → 2,617.55 บาท\", \"inelig_note\": \"\"}]}}]",
+    "agentUsed": "Advisor",
+    "type": "json",
+    "createdAt": "2026-06-21T10:37:12.616Z",
+    "updatedAt": "2026-06-21T10:37:12.616Z"
+  },
+  {
+    "id": 31,
+    "sessionId": "session-578921",
+    "role": "USER",
+    "content": "ยอมผ่อนมากขึ้นเพื่อปิดหนี้เร็วขึ้น",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:37:15.956Z",
+    "updatedAt": "2026-06-21T10:37:15.956Z"
+  },
+  {
+    "id": 32,
+    "sessionId": "session-578921",
+    "role": "BOT",
+    "content": "แผนหมายเลข - มีระยะเวลาผ่อนชำระ 0 เดือน หากต้องการปิดหนี้เร็วขึ้น ระยะเวลายิ่งสั้น ดอกเบี้ยรวมก็จะยิ่งลดลงค่ะ น้องฟินขอแนะนำที่ 0 เดือน ดูไหมคะ หรือระบุระยะเวลาที่ต้องการ (เป็นปีหรือเดือน) ได้เลยค่ะ",
+    "agentUsed": "Advisor",
+    "type": "text",
+    "createdAt": "2026-06-21T10:37:31.649Z",
+    "updatedAt": "2026-06-21T10:37:31.649Z"
+  },
+  {
+    "id": 33,
+    "sessionId": "session-513146",
+    "role": "USER",
+    "content": "ต้องการปรับโครงสร้างสินเชื่อส่วนบุคคล",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:38:13.193Z",
+    "updatedAt": "2026-06-21T10:38:13.193Z"
+  },
+  {
+    "id": 34,
+    "sessionId": "session-513146",
+    "role": "BOT",
+    "content": "[{\"jsonType\": \"offerCard\", \"planId\": \"TDR0220260621103821\", \"offerCard\": {\"plan_id\": \"TDR0220260621103821\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระคงที่โดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503619, xxxxxx503620\", \"cnt_eligible\": \"2\", \"cnt_total\": \"2\", \"total_os\": \"29,894.91\", \"prev_inst\": \"1,900\", \"new_inst\": \"1,710\", \"step_label\": \"\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"18 → 21 งวด\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"int_total_change\": \"3,832.63 → 4,334.33 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503620\", \"acc_name\": \"สินเชื่อ 100K\", \"os\": \"17,983.94\", \"int_rate\": \"12.00\", \"term_old\": \"\", \"term_change\": \"18 → 21 งวด\", \"inst_old\": \"\", \"inst_change\": \"900 → 966 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"2,180.13 → 2,016.63 บาท\", \"inelig_note\": \"\"}, {\"acc_no\": \"xxxxxx503619\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,910.97\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"14 → 20 งวด\", \"inst_old\": \"\", \"inst_change\": \"1,000 → 744 บาท/งวด\", \"inst_change_y1\": \"\", \"inst_y2y3\": \"\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,652.49 → 2,317.70 บาท\", \"inelig_note\": \"\"}]}}, {\"jsonType\": \"offerCard\", \"planId\": \"TDR0420260621103821\", \"offerCard\": {\"plan_id\": \"TDR0420260621103821\", \"plan_desc\": \"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระแบบขั้นบันไดโดยขยายอายุสัญญา\", \"ncb_badge\": \"มีผลต่อเครดิตบูโร\", \"accounts\": \"xxxxxx503619, xxxxxx503620\", \"cnt_eligible\": \"2\", \"cnt_total\": \"2\", \"total_os\": \"29,894.91\", \"prev_inst\": \"1,900\", \"new_inst\": \"1,710\", \"step_label\": \"ปีแรก\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"int_rate_new\": \"\", \"term_actual_old\": \"\", \"term_remain_new\": \"\", \"term_change\": \"18 → 16 งวด\", \"inst_y2y3\": \"3,510 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"int_total_change\": \"3,832.63 → 3,980.52 บาท\", \"balloon_rows\": [], \"notes\": [\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"], \"account_details\": [{\"acc_no\": \"xxxxxx503620\", \"acc_name\": \"สินเชื่อ 100K\", \"os\": \"17,983.94\", \"int_rate\": \"12.00\", \"term_old\": \"\", \"term_change\": \"18 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"900 → 966 บาท/งวด\", \"inst_y2y3\": \"2,147 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"2,180.13 → 1,817.38 บาท\", \"inelig_note\": \"\"}, {\"acc_no\": \"xxxxxx503619\", \"acc_name\": \"สินเชื่อกรุงไทยใจป้ำ\", \"os\": \"11,910.97\", \"int_rate\": \"22.00\", \"term_old\": \"\", \"term_change\": \"14 → 16 งวด\", \"inst_old\": \"\", \"inst_change\": \"\", \"inst_change_y1\": \"1,000 → 744 บาท/งวด\", \"inst_y2y3\": \"1,363 และ 0 บาท/งวด\", \"inst_after_3m\": \"\", \"inst_new_loan\": \"\", \"balloon_payment\": \"\", \"int_total_old\": \"\", \"int_total_change\": \"1,652.49 → 2,163.14 บาท\", \"inelig_note\": \"\"}]}}]",
+    "agentUsed": "Advisor",
+    "type": "json",
+    "createdAt": "2026-06-21T10:38:22.045Z",
+    "updatedAt": "2026-06-21T10:38:22.045Z"
+  },
+  {
+    "id": 35,
+    "sessionId": "session-513146",
+    "role": "USER",
+    "content": "ต้องการค่างวดที่น้อยกว่านี้",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:38:36.323Z",
+    "updatedAt": "2026-06-21T10:38:36.323Z"
+  },
+  {
+    "id": 36,
+    "sessionId": "session-513146",
+    "role": "BOT",
+    "content": "แผนหมายเลข - มียอดผ่อนชำระ 0 บาทต่อเดือน หากต้องการลดยอดผ่อนชำระ ยอดผ่อนยิ่งต่ำ ระยะเวลาและดอกเบี้ยรวมก็จะยิ่งสูงขึ้นค่ะ น้องฟินขอแนะนำที่ 0 บาทต่อเดือน ดูไหมคะ หรือระบุยอดที่สะดวกได้เลยค่ะ น้องฟินจะลองพิจารณาหาแผนที่ตรงกับความต้องการของลูกค้าดูให้ค่ะ",
+    "agentUsed": "Advisor",
+    "type": "text",
+    "createdAt": "2026-06-21T10:38:49.318Z",
+    "updatedAt": "2026-06-21T10:38:49.318Z"
+  },
+  {
+    "id": 37,
+    "sessionId": "session-513146",
+    "role": "USER",
+    "content": "{\"jsonType\":\"offerCard\",\"planId\":\"TDR0420260621103821\",\"offerCard\":{\"plan_id\":\"TDR0420260621103821\",\"plan_desc\":\"มาตรการปรับโครงสร้างหนี้ด้วยอัตราผ่อนชำระแบบขั้นบันไดโดยขยายอายุสัญญา\",\"ncb_badge\":\"มีผลต่อเครดิตบูโร\",\"accounts\":\"xxxxxx503619, xxxxxx503620\",\"cnt_eligible\":\"2\",\"cnt_total\":\"2\",\"total_os\":\"29,894.91\",\"prev_inst\":\"1,900\",\"new_inst\":\"1,710\",\"step_label\":\"ปีแรก\",\"source_desc\":\"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\",\"int_rate_new\":\"\",\"term_actual_old\":\"\",\"term_remain_new\":\"\",\"term_change\":\"18 → 16 งวด\",\"inst_y2y3\":\"3,510 และ 0 บาท/งวด\",\"inst_after_3m\":\"\",\"int_total_change\":\"3,832.63 → 3,980.52 บาท\",\"balloon_rows\":[],\"notes\":[\"มาตรการนี้ส่งผลต่อข้อมูลที่ธนาคารมีการจัดส่งไปยังสำนักงานเครดิตแห่งชาติซึ่งอาจมีผลต่อการขอสินเชื่อของลูกค้าในอนาคต\"],\"account_details\":[{\"acc_no\":\"xxxxxx503620\",\"acc_name\":\"สินเชื่อ 100K\",\"os\":\"17,983.94\",\"int_rate\":\"12.00\",\"term_old\":\"\",\"term_change\":\"18 → 16 งวด\",\"inst_old\":\"\",\"inst_change\":\"\",\"inst_change_y1\":\"900 → 966 บาท/งวด\",\"inst_y2y3\":\"2,147 และ 0 บาท/งวด\",\"inst_after_3m\":\"\",\"inst_new_loan\":\"\",\"balloon_payment\":\"\",\"int_total_old\":\"\",\"int_total_change\":\"2,180.13 → 1,817.38 บาท\",\"inelig_note\":\"\"},{\"acc_no\":\"xxxxxx503619\",\"acc_name\":\"สินเชื่อกรุงไทยใจป้ำ\",\"os\":\"11,910.97\",\"int_rate\":\"22.00\",\"term_old\":\"\",\"term_change\":\"14 → 16 งวด\",\"inst_old\":\"\",\"inst_change\":\"\",\"inst_change_y1\":\"1,000 → 744 บาท/งวด\",\"inst_y2y3\":\"1,363 และ 0 บาท/งวด\",\"inst_after_3m\":\"\",\"inst_new_loan\":\"\",\"balloon_payment\":\"\",\"int_total_old\":\"\",\"int_total_change\":\"1,652.49 → 2,163.14 บาท\",\"inelig_note\":\"\"}]}}",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:42:28.012Z",
+    "updatedAt": "2026-06-21T10:42:28.012Z"
+  },
+  {
+    "id": 38,
+    "sessionId": "session-513146",
+    "role": "BOT",
+    "content": "ขอบคุณค่ะ ขณะนี้ระบบได้ดำเนินการส่งเรื่องไปยังเจ้าหน้าที่ เจ้าหน้าที่จะติดต่อท่านกลับไปภายใน 3 วัน หากต้องการให้น้องฟินดูแดเรื่องใดเพิ่มเติม สามารถแจ้งน้องฟินได้เลยนะคะ",
+    "agentUsed": "Summary",
+    "type": "text",
+    "createdAt": "2026-06-21T10:42:36.717Z",
+    "updatedAt": "2026-06-21T10:42:36.717Z"
+  },
+  {
+    "id": 39,
+    "sessionId": "session-513146",
+    "role": "USER",
+    "content": "สนใจโครงการที่ช่วยเหลือเกี่ยวกับสินเชื่อบ้าน มีอะไรบ้าง",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:43:51.195Z",
+    "updatedAt": "2026-06-21T10:43:51.195Z"
+  },
+  {
+    "id": 40,
+    "sessionId": "session-513146",
+    "role": "BOT",
+    "content": "ขออภัยค่ะ ระบบเกิดความขัดข้องในการประมวลผลคำตอบของท่าน กรุณาถามใหม่อีกครั้งค่ะ",
+    "agentUsed": "education",
+    "type": "text",
+    "createdAt": "2026-06-21T10:44:08.877Z",
+    "updatedAt": "2026-06-21T10:44:08.877Z"
+  },
+  {
+    "id": 41,
+    "sessionId": "session-513146",
+    "role": "USER",
+    "content": "สนใจโครงการที่ช่วยเหลือเกี่ยวกับสินเชื่อส่วนบุคคล มีอะไรบ้าง",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:44:49.569Z",
+    "updatedAt": "2026-06-21T10:44:49.569Z"
+  },
+  {
+    "id": 42,
+    "sessionId": "session-513146",
+    "role": "BOT",
+    "content": "โครงการ “คุณสู้ เราช่วย” มีมาตรการช่วยเหลือสำหรับสินเชื่อส่วนบุคคล ได้แก่ มาตรการที่ 2 “จ่าย ปิด จบ” สำหรับหนี้เสียยอดไม่เกิน 10,000 บาทต่อบัญชี <cite>khunsoo-v3p0.txt, line 55-75</cite> และมาตรการที่ 3 “จ่าย ตัด ต้น” สำหรับหนี้เสียสินเชื่อไม่มีหลักประกันยอดไม่เกิน 50,000 บาทต่อบัญชี <cite>khunsoo-v3p0.txt, line 79-96</cite>",
+    "agentUsed": "education",
+    "type": "text",
+    "createdAt": "2026-06-21T10:45:07.964Z",
+    "updatedAt": "2026-06-21T10:45:07.964Z"
+  },
+  {
+    "id": 43,
+    "sessionId": "session-513146",
+    "role": "USER",
+    "content": "เสนอโครงการแก้หนี้ตอนนี้ที่มีอยู่ให้ที",
+    "agentUsed": "UserMessage",
+    "type": "text",
+    "createdAt": "2026-06-21T10:45:34.338Z",
+    "updatedAt": "2026-06-21T10:45:34.338Z"
+  },
+  {
+    "id": 44,
+    "sessionId": "session-513146",
+    "role": "BOT",
+    "content": "น้องฟิน ยินดีให้บริการคำปรึกษาแก้ปัญหาหนี้ค่ะ เพื่อให้ระบบสามารถวิเคราะห์แนวทางการแก้ปัญหาหนี้ได้ถูกต้อง กรุณาระบุความสามารถในการชำระสินเชื่อและระบุบัญชีที่ลูกค้าต้องการ จากบัญชีสินเชื่อธนาคารกรุงไทยที่พบบนระบบ ดังนี้ค่ะ\n\nบัญชีที่ 1\nเลขที่บัญชี: xxxxxx503620\nประเภทสินเชื่อ: สินเชื่อ 100K\nยอดชำระคงเหลือ: 17,983.94 บาท\nอัตราผ่อนชำระ: 900 บาท/เดือน\nระยะเวลาคงเหลือ: 18 เดือน\nสถานะ: มีการค้างชำระ 2 งวด\n\nบัญชีที่ 2\nเลขที่บัญชี: xxxxxx503619\nประเภทสินเชื่อ: สินเชื่อกรุงไทยใจป้ำ\nยอดชำระคงเหลือ: 11,910.97 บาท\nอัตราผ่อนชำระ: 1,000 บาท/เดือน\nระยะเวลาคงเหลือ: 14 เดือน\nสถานะ: มีการค้างชำระ 2 งวด\n\nบัญชีที่ 3\nเลขที่บัญชี: xxxxxx503618\nประเภทสินเชื่อ: สินเชื่อบ้านกรุงไทย\nยอดชำระคงเหลือ: 1,081,785.21 บาท\nอัตราผ่อนชำระ: 8,500 บาท/เดือน\nระยะเวลาคงเหลือ: 255 เดือน\nสถานะ: มีการค้างชำระ 2 งวด\n\nสรุปภาพรวมสินเชื่อ\nจำนวนบัญชีทั้งหมด: 3 บัญชี\nอัตราผ่อนชำระรวม: 10,400 บาท/เดือน",
+    "agentUsed": "Advisor",
+    "type": "text",
+    "createdAt": "2026-06-21T10:45:46.464Z",
+    "updatedAt": "2026-06-21T10:45:46.464Z"
+  }
+]

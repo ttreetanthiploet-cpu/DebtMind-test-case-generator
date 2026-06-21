@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "final-test-case-gen"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "google-genai",
+    "requests",
+]
+
+[project.scripts]
+gen-payloads    = "final_test_case_gen.main:_cli"
+gen-unit-tests  = "final_test_case_gen.unit_test_main:_cli"
+
+[tool.setuptools.package-dir]
+"" = ".."
+
+[tool.setuptools.packages.find]
+where = [".."]
+include = ["final_test_case_gen*"]
