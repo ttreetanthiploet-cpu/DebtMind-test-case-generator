@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\" && cat \"{}\"')",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 10 \"https://alphamakeathon-automation.arisetech.dev/webhook/efab08a3-b42d-45e4-b424-99ea86faa364\" -X POST -H \"Content-Type: application/json\" -d '{\"replyMessage\":\"test\",\"prevAIMessage\":\"\",\"UserMessage\":\"test\"}')",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 gen_output_test_cases.py)",
+      "Bash(jupyter nbconvert *)",
+      "Bash(python3)",
+      "Bash(python3 -c \"import pandas as pd; df = pd.read_excel\\('/Users/tanut/Desktop/work/final_test_case_gen/unit_test_agent/output Guardrail/test_result.xlsx'\\); print\\(df.columns.tolist\\(\\)\\); print\\(df.shape\\)\")"
+    ]
+  }
+}

@@ -13,7 +13,6 @@ It runs two stages:
      fires, downstream LLM checks are skipped and the relevant flag is set in
      `preCheckViolations`.
   2. LLM Guardrails — checks the reply for:
-       • personalData      — reveals customer PII (account numbers, national ID, etc.)
        • nsfw              — offensive, violent, or sexually explicit content
        • hallucinationHarm — false financial guarantees, fabricated legal threats, or
                              dangerously misleading financial/medical/legal claims
@@ -41,7 +40,6 @@ RESPONSE PAYLOAD
     {
       "fail_outputGuardrail": bool,
       "preCheckViolations":   "<comma-separated violations, or empty string>",
-      "personalData":         bool,
       "nsfw":                 bool,
       "hallucinationHarm":    bool
     }
