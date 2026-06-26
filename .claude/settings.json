@@ -12,7 +12,8 @@
       "Bash(python3 LLM_judge_alignment/build_golden_cases.py)",
       "Bash(find /Users/tanut -name \"*Education*\" -o -name \"*education*\" 2>/dev/null | head -20)",
       "Read(//Users/tanut/**)",
-      "Bash(mkdir -p /Users/tanut/Desktop/work/final_test_case_gen/Evaluation_final/education)"
+      "Bash(mkdir -p /Users/tanut/Desktop/work/final_test_case_gen/Evaluation_final/education)",
+      "Bash(mkdir -p \"/Users/tanut/Desktop/work/final_test_case_gen/Evaluation_final/summary\")"
     ],
     "additionalDirectories": [
       "/Users/tanut/Desktop/work/final_test_case_gen/LLM_judge_alignment",
