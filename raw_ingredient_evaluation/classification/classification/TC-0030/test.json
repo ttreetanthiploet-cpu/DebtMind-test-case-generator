@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0030",
+  "agentType": "classification",
+  "sourcePayload": "TC-0040",
+  "scenario": "NEGOTIATE_TERM",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] NEGOTIATE_TERM — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "966 บาทนี่คือสำหรับสินเชื่อ Money Prompt ใช่ไหมคะ? ถ้าใช่ หนูขอโปะปิดบัญชีนี้ไปเลยได้ไหมคะ",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 21 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 4334.33 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 3980.52 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user wants to restructure their personal loan."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user asked for clarification on the proposed plan and then requested to pay off the loan in full instead of restructuring. The conversation is routed to the advisor to handle the payoff request."
+  }
+}

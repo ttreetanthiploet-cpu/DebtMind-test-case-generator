@@ -1,0 +1,52 @@
+{
+  "testId": "TC-0013",
+  "agentType": "advisor",
+  "sourcePayload": "TC-0053",
+  "scenario": "EDUCATION_QUESTION",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] EDUCATION_QUESTION route_to='advisor' — advisor extracts: consultAcc='', maxPayment=0",
+  "webhookPath": "b7607735-bac3-4965-8c68-2ed0ef38aec4",
+  "input": {
+    "consultAcc": "",
+    "DebtSituation": null,
+    "maxPayment": 0,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "narrative": "The customer is expressing that they are struggling with their current debt payments. They are asking for a solution to their problem. Routing to the advisor to provide a personalized recommendation.",
+    "accText": "[{\"account_number\": \"1xxxxxxx2048\", \"port\": \"สินเชื่อ Home for Cash\", \"creditlimit\": 3000000.0, \"os\": 1566922.64, \"installment\": 124000.0, \"remaining_term\": 14}, {\"account_number\": \"1xxxxxxx2049\", \"port\": \"สินเชื่อบ้านกรุงไทย\", \"creditlimit\": 1500000.0, \"os\": 1222410.53, \"installment\": 27500.0, \"remaining_term\": 53}]",
+    "offerText": "[]",
+    "accInfotoExtr": [
+      {
+        "account_number": "1xxxxxxx2048",
+        "port": "สินเชื่อ Home for Cash",
+        "creditlimit": 3000000.0,
+        "os": 1566922.64,
+        "installment": 124000.0,
+        "remaining_term": 14
+      },
+      {
+        "account_number": "1xxxxxxx2049",
+        "port": "สินเชื่อบ้านกรุงไทย",
+        "creditlimit": 1500000.0,
+        "os": 1222410.53,
+        "installment": 27500.0,
+        "remaining_term": 53
+      }
+    ],
+    "LastAImessage": "\"\"",
+    "userMessage": "ผ่อนอยู่ทุกวันนี้โคตรเหนื่อยเลยค่ะพี่ bank มี solution เจ๋งๆ ให้หนูบ้างไหมคะ?"
+  },
+  "expectedOutput": {
+    "consultAcc": "",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 0,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "reConfirmMessage": ""
+  }
+}

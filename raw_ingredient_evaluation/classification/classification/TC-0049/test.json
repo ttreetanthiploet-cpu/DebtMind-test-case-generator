@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0049",
+  "agentType": "classification",
+  "sourcePayload": "TC-0077",
+  "scenario": "EDUCATION_QUESTION",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] EDUCATION_QUESTION — expected route_to=education",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "นี่ ถ้าหนู restructured loan แล้ว credit score จะแย่ลงเยอะมั้ยคะ กังวลว่าจะกู้บ้านไม่ผ่านในอนาคตอ่ะ",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "education",
+    "narrative": "The customer is asking about the impact of loan restructuring on their credit score. They are concerned this could affect their ability to get a home loan in the future. The query is informational, so it is being routed to the education agent."
+  }
+}

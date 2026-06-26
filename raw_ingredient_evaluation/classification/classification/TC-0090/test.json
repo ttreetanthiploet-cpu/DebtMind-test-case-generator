@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0090",
+  "agentType": "classification",
+  "sourcePayload": "TC-0169",
+  "scenario": "NEGOTIATE_PAYMENT",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] NEGOTIATE_PAYMENT — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ค่างวด 6,200 สูงเกินไป ขอลดได้ไหมครับ",
+    "LastAImessage": "เสนอแนวทางการปรับปรุงสินเชื่อ ด้วยแนวทางและข้อมูลดังนี้\n\nแนวทางที่ 1: สินเชื่อรวมหนี้ MOU แบบไม่มีหลักประกัน\n  - รูปแบบแนวทางที่นำเสนอ: ขั้นต่ำที่สุดที่เป็นไปได้\n  - บัญชีที่พิจารณาปรับโครงสร้าง: 10000004\n  - ระยะเวลาผ่อนชำระ: 60 งวด\n  - ค่างวด: 6200 บาท\n  - ดอกเบี้ยรวมตลอดสัญญา: 51057.86 บาท\n  - การชำระคงที่: true",
+    "PrevAIagent": "advisor",
+    "narrative": "Customer is requesting a lower monthly installment than the proposed amount."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "lower installment"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0027",
+  "agentType": "classification",
+  "sourcePayload": "TC-0037",
+  "scenario": "STAFF_REQUEST",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] STAFF_REQUEST — expected route_to=summary",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ขอให้เจ้าหน้าที่ติดต่อกลับด้วยครับ",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503379\n  - ระยะเวลา: 18 งวด\n  - ค่างวด: 4500 บาท\n  - ดอกเบี้ยรวม: 11517.57 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503379\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 4500 บาท\n  - ดอกเบี้ยรวม: 11406.36 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user is asking for information about the 'Khun Soo Rao Chuay' program. The conversation is being routed to the education agent to provide an explanation."
+  },
+  "expectedOutput": {
+    "route_to": "summary",
+    "narrative": "The advisor presented two debt restructuring plans. The customer has requested to be contacted by a staff member to finalize the arrangement. The conversation is being routed to the summary agent to facilitate the handover."
+  }
+}

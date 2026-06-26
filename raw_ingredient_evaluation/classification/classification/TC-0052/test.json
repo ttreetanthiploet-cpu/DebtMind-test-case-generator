@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0052",
+  "agentType": "classification",
+  "sourcePayload": "TC-0087",
+  "scenario": "NEGOTIATE_TERM",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] NEGOTIATE_TERM — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ข้อเสนอ 37,000 บาทต่อเดือน ผมคิดว่าผมผ่อนได้มากกว่านั้นครับ อยากให้ระยะเวลาผ่อนสั้นลงกว่า 240 งวดได้ไหมครับ",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\n  - รูปแบบ: ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\n  - บัญชี: xxxxxx500362, xxxxxx500364, xxxxxx500363\n  - ระยะเวลา: 240 งวด\n  - ค่างวด: 37000 บาท\n  - ดอกเบี้ยรวม: 1316077.83 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user wants to restructure their debt."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user received a restructuring plan from the advisor. The user stated they can afford a higher monthly payment than the proposed 37,000 THB and requested a shorter repayment period than 240 months. Routing back to the advisor to modify the plan."
+  }
+}

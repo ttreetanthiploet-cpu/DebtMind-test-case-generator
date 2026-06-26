@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0041",
+  "agentType": "classification",
+  "sourcePayload": "TC-0060",
+  "scenario": "MULTI_TURN",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] MULTI_TURN — expected route_to=unknown",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "เป็นควยไร แค่นี้หาไม่เจอ",
+    "LastAImessage": "**โครงการปิดหนี้ไวไปต่อได้**\nเป็นโครงการของธนาคารแห่งประเทศไทยเพื่อช่วยเหลือลูกหนี้รายย่อยที่มีภาระหนี้ NPL ไม่สูง โดยบริหารจัดการหนี้แบบรวมศูนย์เพื่อให้กลับมาชำระหนี้ได้ มีประวัติที่ดีขึ้น และเข้าถึงสินเชื่อในระบบได้ โดยสามารถติดต่อได้ที่ธนาคารกรุงไทยทุกสาขา หรือสอบถามผ่าน ธปท. และ SAM ตั้งแต่วันที่ 5 ม.ค. 69 เป็นต้นไป <cite>ktb-info-1576-v3p1.txt, line 31-36</cite>\n\n**โครงการคุณสู้เราช่วย**\nไม่พบข้อมูลโครงการคุณสู้เราช่วย",
+    "PrevAIagent": "education",
+    "narrative": "The advisor presented two TDR plans with an 800 baht monthly installment. The customer has reviewed the options and now wishes to modify the plan to pay a higher monthly amount. The conversation is being routed back to the advisor to generate a new plan."
+  },
+  "expectedOutput": {
+    "route_to": "unknown",
+    "narrative": "The user responded with abusive language, expressing frustration that the education agent was unable to find information on the 'คุณสู้เราช่วย' program. The intent is unclear and off-topic, so the conversation is routed to unknown."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0011",
+  "agentType": "classification",
+  "sourcePayload": "TC-0013",
+  "scenario": "EDUCATION_QUESTION",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] EDUCATION_QUESTION — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ผ่อนอยู่ทุกวันนี้โคตรเหนื่อยเลยค่ะพี่ bank มี solution เจ๋งๆ ให้หนูบ้างไหมคะ?",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user is feeling overwhelmed by their debt payments and is asking for a solution. This is a direct request for personalized advice on how to manage their debt. Routing to the advisor to provide a tailored recommendation."
+  }
+}

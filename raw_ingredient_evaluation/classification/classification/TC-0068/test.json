@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0068",
+  "agentType": "classification",
+  "sourcePayload": "TC-0147",
+  "scenario": "EDUCATION_QUESTION",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] EDUCATION_QUESTION — expected route_to=education",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "อยากทราบว่า TDR คืออะไรครับ แล้วถ้าเข้าร่วมโครงการพักชำระหนี้จะมีผลกับประวัติในเครดิตบูโรยังไงบ้างครับ",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "education",
+    "narrative": "The user is asking for definitions of financial terms. They want to know what TDR is and how a debt suspension program would affect their credit bureau history. The query is informational, so it is being routed to the education agent."
+  }
+}

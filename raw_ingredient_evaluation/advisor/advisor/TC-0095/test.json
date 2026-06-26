@@ -1,0 +1,44 @@
+{
+  "testId": "TC-0095",
+  "agentType": "advisor",
+  "sourcePayload": "TC-0018",
+  "scenario": "AFTER_OFFER_TEXT",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] AFTER_OFFER_TEXT route_to='advisor' — advisor extracts: consultAcc='xxxxxx503619', maxPayment=500",
+  "webhookPath": "b7607735-bac3-4965-8c68-2ed0ef38aec4",
+  "input": {
+    "consultAcc": "xxxxxx503619",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 500,
+    "maxTerm": 120,
+    "refPlanID": "TDR0220260621103712",
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "narrative": "The user is still considering the TDR plans offered by the advisor. They feel the proposed monthly payment of over 900 THB is too high, even though they want to pay off the debt quickly. The conversation is routed back to the advisor to explore alternative solutions.",
+    "accText": "[{\"account_number\": \"1xxxxxxx3722\", \"port\": \"สินเชื่อ Supply Chain\", \"creditlimit\": 100000.0, \"os\": 48186.51, \"installment\": 4500.0, \"remaining_term\": 12}]",
+    "offerText": "[{\"planId\": \"TDR0220260621103031\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"refAccNo\": \"xxxxxx503620, xxxxxx503619\", \"term\": 21, \"installment\": 965.83, \"totalExpInt\": 4334.33, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"accounts\": \"xxxxxx503620, xxxxxx503619\", \"cnt_eligible\": 2, \"cnt_total\": 2, \"total_os\": 29894.91, \"new_inst\": 965.83, \"int_rate_new\": \"12%\", \"term_change\": \"21 งวด\", \"int_total_change\": \"4334 บาท\"}, {\"planId\": \"TDR0420260621103031\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"refAccNo\": \"xxxxxx503620, xxxxxx503619\", \"term\": 16, \"installment\": 965.83, \"totalExpInt\": 3980.52, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"accounts\": \"xxxxxx503620, xxxxxx503619\", \"cnt_eligible\": 2, \"cnt_total\": 2, \"total_os\": 29894.91, \"new_inst\": 965.83, \"int_rate_new\": \"12%\", \"term_change\": \"16 งวด\", \"int_total_change\": \"3981 บาท\", \"maxPaymentY2\": 2147.44, \"maxPaymentY3\": 0}, {\"planId\": \"TDR0220260621103712\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"refAccNo\": \"xxxxxx503619\", \"term\": 32, \"installment\": 500, \"totalExpInt\": 3887.9, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"accounts\": \"xxxxxx503619\", \"cnt_eligible\": 1, \"cnt_total\": 1, \"total_os\": 11910.97, \"new_inst\": 500, \"int_rate_new\": \"22%\", \"term_change\": \"32 งวด\", \"int_total_change\": \"3888 บาท\"}, {\"planId\": \"TDR0420260621103712\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"refAccNo\": \"xxxxxx503619\", \"term\": 16, \"installment\": 500.0, \"totalExpInt\": 2617.55, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"accounts\": \"xxxxxx503619\", \"cnt_eligible\": 1, \"cnt_total\": 1, \"total_os\": 11910.97, \"new_inst\": 500.0, \"int_rate_new\": \"22%\", \"term_change\": \"16 งวด\", \"int_total_change\": \"2618 บาท\", \"maxPaymentY2\": 2300.0, \"maxPaymentY3\": 0}]",
+    "accInfotoExtr": [
+      {
+        "account_number": "1xxxxxxx3722",
+        "port": "สินเชื่อ Supply Chain",
+        "creditlimit": 100000.0,
+        "os": 48186.51,
+        "installment": 4500.0,
+        "remaining_term": 12
+      }
+    ],
+    "LastAImessage": "\"เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\\n\\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\\n  - บัญชี: xxxxxx503620, xxxxxx503619\\n  - ระยะเวลา: 21 งวด\\n  - ค่างวด: 965.83 บาท\\n  - ดอกเบี้ยรวม: 4334.33 บาท\\n\\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\\n  - บัญชี: xxxxxx503620, xxxxxx503619\\n  - ระยะเวลา: 16 งวด\\n  - ค่างวด: 965.83 บาท\\n  - ดอกเบี้ยรวม: 3980.52 บาท\\n\\nแผนที่ 3: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\\n  - บัญชี: xxxxxx503619\\n  - ระยะเวลา: 32 งวด\\n  - ค่างวด: 500 บาท\\n  - ดอกเบี้ยรวม: 3887.9 บาท\\n\\nแผนที่ 4: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\\n  - บัญชี: xxxxxx503619\\n  - ระยะเวลา: 16 งวด\\n  - ค่างวด: 500.0 บาท\\n  - ดอกเบี้ยรวม: 2617.55 บาท\"",
+    "userMessage": "คือ...เห็นตัวเลือกแล้วก็ยังคิดหนักอยู่เลยนะ ที่บอกว่าอยากจ่ายเพิ่มนี่คืออยากให้มันจบๆ ไปเร็วๆ แต่ 900 กว่าบาทยังดูเยอะไปอยู่ดีนะ"
+  },
+  "expectedOutput": {
+    "consultAcc": "xxxxxx503619",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 500,
+    "maxTerm": 120,
+    "refPlanID": "TDR0220260621103031",
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "reConfirmMessage": "CLARIFY_HIGH_INSTALLMENT"
+  }
+}

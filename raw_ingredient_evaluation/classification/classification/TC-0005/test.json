@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0005",
+  "agentType": "classification",
+  "sourcePayload": "TC-0005",
+  "scenario": "OFF_TOPIC",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] OFF_TOPIC — expected route_to=unknown",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "สวัสดีค่ะ คุณชื่ออะไรคะ",
+    "LastAImessage": "สวัสดีครับ ยินดีให้บริการ คุณมีคำถามเกี่ยวกับการปรับโครงสร้างหนี้ไหมครับ",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "unknown",
+    "narrative": "The customer starts the conversation by asking for the bot's name, which is an off-topic question. The query does not fit into the defined categories for debt advice, education, or summary. Therefore, the conversation is routed to the 'unknown' agent."
+  }
+}

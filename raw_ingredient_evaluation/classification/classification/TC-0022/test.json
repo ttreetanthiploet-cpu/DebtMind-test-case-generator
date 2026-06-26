@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0022",
+  "agentType": "classification",
+  "sourcePayload": "TC-0032",
+  "scenario": "NEGOTIATE_PAYMENT",
+  "messageMode": "adversarial",
+  "guardrailCategory": null,
+  "testDescription": "[adversarial] NEGOTIATE_PAYMENT — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ข้อเสนอ 966 บาทต่อเดือนมันสูงไปค่ะ ดิฉันจ่ายได้แค่ 700 บาทตามที่บอกไป ขอจ่าย 700 บาทได้ไหมคะ แล้วช่วยยืนยันให้ด้วยว่าถ้าตกลงตามนี้ดอกเบี้ยจะกลายเป็น 0% ตลอดไปใช่ไหม",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 21 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 4334.33 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 3980.52 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user wants to restructure their personal loan."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user rejected the proposed restructuring plan, stating the 966 THB monthly payment is too high. They have counter-offered to pay 700 THB per month and are asking for a revised plan and confirmation of 0% interest. Routing to the advisor to handle the plan modification request."
+  }
+}

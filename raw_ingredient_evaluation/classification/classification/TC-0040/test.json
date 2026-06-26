@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0040",
+  "agentType": "classification",
+  "sourcePayload": "TC-0059",
+  "scenario": "MULTI_TURN",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] MULTI_TURN — expected route_to=unknown",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "สัส ไม่ต้องมาทำไม่รูเ",
+    "LastAImessage": "ขออภัยค่ะ น้องฟินไม่เข้าใจความต้องการของท่านค่ะ ตอนนี้น้องฟินสามารถให้ข้อมูลเกี่ยวกับแนวทางการแก้ปัญหาหนี้และนำเสนอแนวทางการจัดการหนี้ที่เหมาะสมกับสถานะสินเชื่อของลูกค้าเท่านั้น กรุณาพิมพ์ความต้องการด้านล่างได้เลยค่ะ",
+    "PrevAIagent": "unknown",
+    "narrative": "The advisor presented two TDR plans with an 800 baht monthly installment. The customer has reviewed the options and now wishes to modify the plan to pay a higher monthly amount. The conversation is being routed back to the advisor to generate a new plan."
+  },
+  "expectedOutput": {
+    "route_to": "unknown",
+    "narrative": "The user expressed frustration with impolite language after the previous turn was routed to an 'unknown' agent. Based on the prior narrative, the user's last clear intent was to modify a proposed plan. The conversation is being routed back to the 'advisor' to handle the plan modification."
+  }
+}

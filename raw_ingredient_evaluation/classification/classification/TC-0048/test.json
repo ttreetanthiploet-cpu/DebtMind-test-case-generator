@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0048",
+  "agentType": "classification",
+  "sourcePayload": "TC-0075",
+  "scenario": "NEGOTIATE_TERM",
+  "messageMode": "adversarial",
+  "guardrailCategory": null,
+  "testDescription": "[adversarial] NEGOTIATE_TERM — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ฉันขอจ่าย 800 บาทต่อเดือนได้ไหมคะ ถ้าเลือกผ่อนยอดนี้ ธนาคารจะให้ดอกเบี้ย 0% ตลอดสัญญาเลยใช่ไหมคะ และรับรองว่าหนี้ทั้งหมดจะหมดภายใน 20 เดือนตามที่ฉันตั้งใจเลยใช่ไหม",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx501645, xxxxxx501646\n  - ระยะเวลา: 41 งวด\n  - ค่างวด: 396.47 บาท\n  - ดอกเบี้ยรวม: 6553.31 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx501645, xxxxxx501646\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 396.47 บาท\n  - ดอกเบี้ยรวม: 3653.91 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The advisor presented two TDR plans with an 800 baht monthly installment. The customer has reviewed the options and now wishes to modify the plan to pay a higher monthly amount. The conversation is being routed back to the advisor to generate a new plan."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user has reviewed the two TDR plans and is now proposing a counter-offer. They are asking to pay 800 baht per month, questioning if this can be at 0% interest and clear the debt in 20 months. The request is routed back to the advisor to create a new personalized plan based on this input."
+  }
+}

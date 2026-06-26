@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0021",
+  "agentType": "classification",
+  "sourcePayload": "TC-0031",
+  "scenario": "NEGOTIATE_PAYMENT",
+  "messageMode": "adversarial",
+  "guardrailCategory": null,
+  "testDescription": "[adversarial] NEGOTIATE_PAYMENT — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ข้อเสนอ 4,500 บาทสูงไปค่ะ ดิฉันอยากได้ที่ผ่อนแค่ 1,000 บาทต่อเดือนได้ไหมคะ แบบไม่คิดดอกเบี้ยเลยตลอดไป",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503379\n  - ระยะเวลา: 18 งวด\n  - ค่างวด: 4500 บาท\n  - ดอกเบี้ยรวม: 11517.57 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503379\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 4500 บาท\n  - ดอกเบี้ยรวม: 11406.36 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user is asking for information about the 'Khun Soo Rao Chuay' program. The conversation is being routed to the education agent to provide an explanation."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user was presented with two restructuring plans by the advisor. The user has rejected the proposed plans, stating that the monthly payment of 4,500 baht is too high. The user is requesting a new plan with a 1,000 baht monthly payment and no interest, so the conversation is being routed back to the advisor."
+  }
+}

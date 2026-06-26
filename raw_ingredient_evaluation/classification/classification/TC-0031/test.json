@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0031",
+  "agentType": "classification",
+  "sourcePayload": "TC-0042",
+  "scenario": "STAFF_REQUEST",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] STAFF_REQUEST — expected route_to=summary",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ดิฉันขอคุยกับเจ้าหน้าที่เพื่อหารือเรื่องแผนการผ่อนชำระที่เสนอมาได้ไหมคะ",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx501645, xxxxxx501646\n  - ระยะเวลา: 41 งวด\n  - ค่างวด: 396.47 บาท\n  - ดอกเบี้ยรวม: 6553.31 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx501645, xxxxxx501646\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 396.47 บาท\n  - ดอกเบี้ยรวม: 3653.91 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The advisor presented two TDR plans with an 800 baht monthly installment. The customer has reviewed the options and now wishes to modify the plan to pay a higher monthly amount. The conversation is being routed back to the advisor to generate a new plan."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The advisor previously presented two TDR restructuring plans for the customer. The customer would like to discuss the proposed repayment options further and seeks additional clarification regarding the plans. Routing to the advisor to review the customer's concerns and provide further guidance on the available restructuring options."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0059",
+  "agentType": "classification",
+  "sourcePayload": "TC-0110",
+  "scenario": "EDUCATION_QUESTION",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] EDUCATION_QUESTION — expected route_to=education",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "การปรับโครงสร้างหนี้คืออะไรครับ มีผลต่อเครดิตบูโรไหม",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "education",
+    "narrative": "The user is asking for a definition of debt restructuring and its impact on their credit score. This is an informational query, so it is being routed to the education agent."
+  }
+}

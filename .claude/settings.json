@@ -7,7 +7,16 @@
       "Bash(python3 gen_output_test_cases.py)",
       "Bash(jupyter nbconvert *)",
       "Bash(python3)",
-      "Bash(python3 -c \"import pandas as pd; df = pd.read_excel\\('/Users/tanut/Desktop/work/final_test_case_gen/unit_test_agent/output Guardrail/test_result.xlsx'\\); print\\(df.columns.tolist\\(\\)\\); print\\(df.shape\\)\")"
+      "Bash(python3 -c \"import pandas as pd; df = pd.read_excel\\('/Users/tanut/Desktop/work/final_test_case_gen/unit_test_agent/output Guardrail/test_result.xlsx'\\); print\\(df.columns.tolist\\(\\)\\); print\\(df.shape\\)\")",
+      "Bash(mkdir -p /Users/tanut/Desktop/work/final_test_case_gen/LLM_judge_alignment/golden_test_cases && echo \"Created\")",
+      "Bash(python3 LLM_judge_alignment/build_golden_cases.py)",
+      "Bash(find /Users/tanut -name \"*Education*\" -o -name \"*education*\" 2>/dev/null | head -20)",
+      "Read(//Users/tanut/**)",
+      "Bash(mkdir -p /Users/tanut/Desktop/work/final_test_case_gen/Evaluation_final/education)"
+    ],
+    "additionalDirectories": [
+      "/Users/tanut/Desktop/work/final_test_case_gen/LLM_judge_alignment",
+      "/Users/tanut/Desktop/work/final_test_case_gen/Evaluation_final"
     ]
   }
 }

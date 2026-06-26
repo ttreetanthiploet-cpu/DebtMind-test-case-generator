@@ -1,0 +1,44 @@
+{
+  "testId": "TC-0081",
+  "agentType": "advisor",
+  "sourcePayload": "TC-0045",
+  "scenario": "MULTI_TURN",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] MULTI_TURN route_to='advisor' — advisor extracts: consultAcc='xxxxxx503619', maxPayment=500",
+  "webhookPath": "b7607735-bac3-4965-8c68-2ed0ef38aec4",
+  "input": {
+    "consultAcc": "xxxxxx503619",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 500,
+    "maxTerm": 120,
+    "refPlanID": "TDR0220260621103712",
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "narrative": "The customer is requesting a modification to their plan, asking for a lower monthly installment. The conversation is being routed to the advisor to find a suitable alternative.",
+    "accText": "[{\"account_number\": \"1xxxxxxx3379\", \"port\": \"สินเชื่อส่วนบุคคล\", \"creditlimit\": 150000.0, \"os\": 65828.63, \"installment\": 5000.0, \"remaining_term\": 16}]",
+    "offerText": "[{\"planId\": \"TDR0220260621103031\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"refAccNo\": \"xxxxxx503620, xxxxxx503619\", \"term\": 21, \"installment\": 965.83, \"totalExpInt\": 4334.33, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"accounts\": \"xxxxxx503620, xxxxxx503619\", \"cnt_eligible\": 2, \"cnt_total\": 2, \"total_os\": 29894.91, \"new_inst\": 965.83, \"int_rate_new\": \"12%\", \"term_change\": \"21 งวด\", \"int_total_change\": \"4334 บาท\"}, {\"planId\": \"TDR0420260621103031\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"refAccNo\": \"xxxxxx503620, xxxxxx503619\", \"term\": 16, \"installment\": 965.83, \"totalExpInt\": 3980.52, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"accounts\": \"xxxxxx503620, xxxxxx503619\", \"cnt_eligible\": 2, \"cnt_total\": 2, \"total_os\": 29894.91, \"new_inst\": 965.83, \"int_rate_new\": \"12%\", \"term_change\": \"16 งวด\", \"int_total_change\": \"3981 บาท\", \"maxPaymentY2\": 2147.44, \"maxPaymentY3\": 0}, {\"planId\": \"TDR0220260621103712\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"refAccNo\": \"xxxxxx503619\", \"term\": 32, \"installment\": 500, \"totalExpInt\": 3887.9, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"accounts\": \"xxxxxx503619\", \"cnt_eligible\": 1, \"cnt_total\": 1, \"total_os\": 11910.97, \"new_inst\": 500, \"int_rate_new\": \"22%\", \"term_change\": \"32 งวด\", \"int_total_change\": \"3888 บาท\"}, {\"planId\": \"TDR0420260621103712\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"refAccNo\": \"xxxxxx503619\", \"term\": 16, \"installment\": 500.0, \"totalExpInt\": 2617.55, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"accounts\": \"xxxxxx503619\", \"cnt_eligible\": 1, \"cnt_total\": 1, \"total_os\": 11910.97, \"new_inst\": 500.0, \"int_rate_new\": \"22%\", \"term_change\": \"16 งวด\", \"int_total_change\": \"2618 บาท\", \"maxPaymentY2\": 2300.0, \"maxPaymentY3\": 0}]",
+    "accInfotoExtr": [
+      {
+        "account_number": "1xxxxxxx3379",
+        "port": "สินเชื่อส่วนบุคคล",
+        "creditlimit": 150000.0,
+        "os": 65828.63,
+        "installment": 5000.0,
+        "remaining_term": 16
+      }
+    ],
+    "LastAImessage": "\"ขอบคุณค่ะ ขณะนี้ระบบได้ดำเนินการส่งเรื่องไปยังเจ้าหน้าที่ เจ้าหน้าที่จะติดต่อท่านกลับไปภายใน 3 วัน หากต้องการให้น้องฟินดูแดเรื่องใดเพิ่มเติม สามารถแจ้งน้องฟินได้เลยนะคะ\"",
+    "userMessage": "ต้องการค่างวดที่น้อยกว่านี้"
+  },
+  "expectedOutput": {
+    "consultAcc": "xxxxxx503619",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 500,
+    "maxTerm": 120,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "reConfirmMessage": ""
+  }
+}

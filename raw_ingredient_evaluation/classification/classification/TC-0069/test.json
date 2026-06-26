@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0069",
+  "agentType": "classification",
+  "sourcePayload": "TC-0148",
+  "scenario": "STAFF_REQUEST",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] STAFF_REQUEST — expected route_to=summary",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "บอทงงอะไรอยู่คะ? เมื่อกี้พนักงานบอก 800 แต่บอทเสนอ 396 บาท คือจะขอผ่อนเพิ่มขึ้นไปอีกจาก 800 น่ะค่ะ ขอคุยกับคนได้ไหมคะ",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx501645, xxxxxx501646\n  - ระยะเวลา: 41 งวด\n  - ค่างวด: 396.47 บาท\n  - ดอกเบี้ยรวม: 6553.31 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx501645, xxxxxx501646\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 396.47 บาท\n  - ดอกเบี้ยรวม: 3653.91 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The advisor presented two TDR plans with an 800 baht monthly installment. The customer has reviewed the options and now wishes to modify the plan to pay a higher monthly amount. The conversation is being routed back to the advisor to generate a new plan."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The customer is confused by the discrepancy between the advisor's proposed installment amount of 396 THB and the 800 THB amount previously discussed with a staff member. The customer wants to increase the monthly payment amount and requests clarification on the available restructuring options. Routing to the advisor to review the customer's preferred payment capacity and provide an updated recommendation."
+  }
+}

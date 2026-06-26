@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0034",
+  "agentType": "classification",
+  "sourcePayload": "TC-0048",
+  "scenario": "STAFF_REQUEST",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] STAFF_REQUEST — expected route_to=summary",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ข้อเสนอคืออะไรคะ 966 บาท? คืออยากรวมหนี้ทุกอย่างเลยอ่ะค่ะ ให้เจ้าหน้าที่โทรมาคุยรายละเอียดดีกว่าค่ะ",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 21 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 4334.33 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 3980.52 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user wants to restructure their personal loan."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The customer is seeking clarification about the proposed restructuring plan with a monthly installment of approximately 966 THB. The customer also expressed interest in consolidating all outstanding debts into a single solution and wants to discuss available options. Routing to the advisor to review the customer's debt consolidation request and provide an updated recommendation."
+  }
+}

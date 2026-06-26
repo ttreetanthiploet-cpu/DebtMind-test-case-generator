@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0026",
+  "agentType": "classification",
+  "sourcePayload": "TC-0036",
+  "scenario": "STAFF_REQUEST",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] STAFF_REQUEST — expected route_to=summary",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ขอคุยกับเจ้าหน้าที่หน่อยครับ",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 21 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 4334.33 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 3980.52 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user wants to restructure their personal loan."
+  },
+  "expectedOutput": {
+    "route_to": "summary",
+    "narrative": "The user was presented with two debt restructuring plans by the advisor. The user is now requesting to speak with a human agent."
+  }
+}

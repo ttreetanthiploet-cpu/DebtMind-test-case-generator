@@ -1,0 +1,60 @@
+{
+  "testId": "TC-0022",
+  "agentType": "advisor",
+  "sourcePayload": "TC-0023",
+  "scenario": "MULTI_TURN",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] MULTI_TURN route_to='advisor' — advisor extracts: consultAcc='xxxxxx501645,xxxxxx501646', maxPayment=800",
+  "webhookPath": "b7607735-bac3-4965-8c68-2ed0ef38aec4",
+  "input": {
+    "consultAcc": "xxxxxx501645,xxxxxx501646",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 800,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "narrative": "The advisor presented two TDR plans. The customer reviewed the options and now wishes to modify the plan to pay a higher monthly amount. The conversation is being routed back to the advisor to generate a new plan based on this request.",
+    "accText": "[{\"account_number\": \"1xxxxxxx2929\", \"port\": \"สินเชื่อกรุงไทยใจดี\", \"creditlimit\": 7000.0, \"os\": 2273.31, \"installment\": 900.0, \"remaining_term\": 3}, {\"account_number\": \"1xxxxxxx2928\", \"port\": \"สินเชื่ออเนกประสงค์ 5 Plus\", \"creditlimit\": 15000.0, \"os\": 10407.52, \"installment\": 1600.0, \"remaining_term\": 7}, {\"account_number\": \"1xxxxxxx2930\", \"port\": \"สินเชื่อกรุงไทยใจป้ำ\", \"creditlimit\": 25000.0, \"os\": 18520.02, \"installment\": 700.0, \"remaining_term\": 24}]",
+    "offerText": "[{\"planId\": \"TDR0220260621100229\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"refAccNo\": \"xxxxxx501645, xxxxxx501646\", \"term\": 41, \"installment\": 396.47, \"totalExpInt\": 6553.31, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"accounts\": \"xxxxxx501645, xxxxxx501646\", \"cnt_eligible\": 2, \"cnt_total\": 2, \"total_os\": 25467.92, \"new_inst\": 396.47, \"int_rate_new\": \"14%\", \"term_change\": \"41 งวด\", \"int_total_change\": \"6553 บาท\"}, {\"planId\": \"TDR0420260621100229\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"refAccNo\": \"xxxxxx501645, xxxxxx501646\", \"term\": 16, \"installment\": 396.47, \"totalExpInt\": 3653.91, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"accounts\": \"xxxxxx501645, xxxxxx501646\", \"cnt_eligible\": 2, \"cnt_total\": 2, \"total_os\": 25467.92, \"new_inst\": 396.47, \"int_rate_new\": \"14%\", \"term_change\": \"16 งวด\", \"int_total_change\": \"3654 บาท\", \"maxPaymentY2\": 2899.19, \"maxPaymentY3\": 0}]",
+    "accInfotoExtr": [
+      {
+        "account_number": "1xxxxxxx2929",
+        "port": "สินเชื่อกรุงไทยใจดี",
+        "creditlimit": 7000.0,
+        "os": 2273.31,
+        "installment": 900.0,
+        "remaining_term": 3
+      },
+      {
+        "account_number": "1xxxxxxx2928",
+        "port": "สินเชื่ออเนกประสงค์ 5 Plus",
+        "creditlimit": 15000.0,
+        "os": 10407.52,
+        "installment": 1600.0,
+        "remaining_term": 7
+      },
+      {
+        "account_number": "1xxxxxxx2930",
+        "port": "สินเชื่อกรุงไทยใจป้ำ",
+        "creditlimit": 25000.0,
+        "os": 18520.02,
+        "installment": 700.0,
+        "remaining_term": 24
+      }
+    ],
+    "LastAImessage": "\"เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\\n\\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\\n  - บัญชี: xxxxxx501645, xxxxxx501646\\n  - ระยะเวลา: 41 งวด\\n  - ค่างวด: 396.47 บาท\\n  - ดอกเบี้ยรวม: 6553.31 บาท\\n\\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\\n  - บัญชี: xxxxxx501645, xxxxxx501646\\n  - ระยะเวลา: 16 งวด\\n  - ค่างวด: 396.47 บาท\\n  - ดอกเบี้ยรวม: 3653.91 บาท\"",
+    "userMessage": "เปลี่ยนใจละ อยากผ่อนมากกว่านี้"
+  },
+  "expectedOutput": {
+    "consultAcc": "xxxxxx501645,xxxxxx501646",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 800,
+    "maxTerm": 360,
+    "refPlanID": "",
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "reConfirmMessage": ""
+  }
+}

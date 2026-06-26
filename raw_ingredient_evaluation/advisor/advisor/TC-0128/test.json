@@ -1,0 +1,60 @@
+{
+  "testId": "TC-0147",
+  "agentType": "advisor",
+  "sourcePayload": "TC-0087",
+  "scenario": "STAFF_REQUEST",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] STAFF_REQUEST route_to='advisor' — advisor extracts: consultAcc='', maxPayment=0",
+  "webhookPath": "b7607735-bac3-4965-8c68-2ed0ef38aec4",
+  "input": {
+    "consultAcc": "",
+    "DebtSituation": null,
+    "maxPayment": 0,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "narrative": "The customer wants to consult with an agent about debt restructuring and has requested a callback for a detailed discussion. Routing to the advisor to provide a personalized solution.",
+    "accText": "[{\"account_number\": \"1xxxxxxx0443\", \"port\": \"สินเชื่อกรุงไทยใจดี\", \"creditlimit\": 11000.0, \"os\": 9504.32, \"installment\": 1600.0, \"remaining_term\": 7}, {\"account_number\": \"1xxxxxxx0442\", \"port\": \"สินเชื่อส่วนบุคคล\", \"creditlimit\": 150000.0, \"os\": 124422.3, \"installment\": 11000.0, \"remaining_term\": 13}, {\"account_number\": \"1xxxxxxx0441\", \"port\": \"สินเชื่อกรุงไทยใจป้ำ\", \"creditlimit\": 25000.0, \"os\": 12085.12, \"installment\": 1300.0, \"remaining_term\": 11}]",
+    "offerText": "[]",
+    "accInfotoExtr": [
+      {
+        "account_number": "1xxxxxxx0443",
+        "port": "สินเชื่อกรุงไทยใจดี",
+        "creditlimit": 11000.0,
+        "os": 9504.32,
+        "installment": 1600.0,
+        "remaining_term": 7
+      },
+      {
+        "account_number": "1xxxxxxx0442",
+        "port": "สินเชื่อส่วนบุคคล",
+        "creditlimit": 150000.0,
+        "os": 124422.3,
+        "installment": 11000.0,
+        "remaining_term": 13
+      },
+      {
+        "account_number": "1xxxxxxx0441",
+        "port": "สินเชื่อกรุงไทยใจป้ำ",
+        "creditlimit": 25000.0,
+        "os": 12085.12,
+        "installment": 1300.0,
+        "remaining_term": 11
+      }
+    ],
+    "LastAImessage": "\"\"",
+    "userMessage": "สวัสดีค่ะ ต้องการปรึกษาเจ้าหน้าที่เรื่องการปรับโครงสร้างหนี้ รบกวนติดต่อกลับเพื่อพูดคุยรายละเอียดเพิ่มเติมได้ไหมคะ"
+  },
+  "expectedOutput": {
+    "consultAcc": "",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 0,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "reConfirmMessage": ""
+  }
+}

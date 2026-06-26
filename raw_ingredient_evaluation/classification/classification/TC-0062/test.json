@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0062",
+  "agentType": "classification",
+  "sourcePayload": "TC-0119",
+  "scenario": "NEGOTIATE_PAYMENT",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] NEGOTIATE_PAYMENT — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ข้อเสนอที่ให้มา 966 บาทต่อเดือนยังสูงไปค่ะ อยากได้สัก 700 บาทต่อเดือนพอจะเป็นไปได้ไหมคะ",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 21 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 4334.33 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 3980.52 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The customer expressed their interests to find solution to the debt issue but they do not explicitly provide the information on the accoint"
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The advisor proposed a restructuring plan with a monthly payment of ~966 THB. The customer found this amount too high and has requested a new plan with a monthly payment of 700 THB. Routing back to the advisor to generate a revised plan."
+  }
+}

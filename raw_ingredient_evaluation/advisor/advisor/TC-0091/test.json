@@ -1,0 +1,60 @@
+{
+  "testId": "TC-0091",
+  "agentType": "advisor",
+  "sourcePayload": "TC-0064",
+  "scenario": "MULTI_TURN",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] MULTI_TURN route_to='advisor' — advisor extracts: consultAcc='xxxxxx501645,xxxxxx501646', maxPayment=800",
+  "webhookPath": "b7607735-bac3-4965-8c68-2ed0ef38aec4",
+  "input": {
+    "consultAcc": "xxxxxx501645,xxxxxx501646",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 800,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "narrative": "The customer has two loan accounts and has responded to the initial prompt by stating their desired monthly payment is 800 baht. This is a request for a personalized debt restructuring plan based on their specified affordability. Routing to the advisor to generate a suitable plan.",
+    "accText": "[{\"account_number\": \"1xxxxxxx0443\", \"port\": \"สินเชื่อกรุงไทยใจดี\", \"creditlimit\": 11000.0, \"os\": 9504.32, \"installment\": 1600.0, \"remaining_term\": 7}, {\"account_number\": \"1xxxxxxx0442\", \"port\": \"สินเชื่อส่วนบุคคล\", \"creditlimit\": 150000.0, \"os\": 124422.3, \"installment\": 11000.0, \"remaining_term\": 13}, {\"account_number\": \"1xxxxxxx0441\", \"port\": \"สินเชื่อกรุงไทยใจป้ำ\", \"creditlimit\": 25000.0, \"os\": 12085.12, \"installment\": 1300.0, \"remaining_term\": 11}]",
+    "offerText": "[{\"planId\": \"TDR0220260621100229\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"refAccNo\": \"xxxxxx501645, xxxxxx501646\", \"term\": 41, \"installment\": 396.47, \"totalExpInt\": 6553.31, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้า\", \"accounts\": \"xxxxxx501645, xxxxxx501646\", \"cnt_eligible\": 2, \"cnt_total\": 2, \"total_os\": 25467.92, \"new_inst\": 396.47, \"int_rate_new\": \"14%\", \"term_change\": \"41 งวด\", \"int_total_change\": \"6553 บาท\"}, {\"planId\": \"TDR0420260621100229\", \"planDesc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"solutionDesc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"refAccNo\": \"xxxxxx501645, xxxxxx501646\", \"term\": 16, \"installment\": 396.47, \"totalExpInt\": 3653.91, \"plan_desc\": \"TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"source_desc\": \"ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\", \"accounts\": \"xxxxxx501645, xxxxxx501646\", \"cnt_eligible\": 2, \"cnt_total\": 2, \"total_os\": 25467.92, \"new_inst\": 396.47, \"int_rate_new\": \"14%\", \"term_change\": \"16 งวด\", \"int_total_change\": \"3654 บาท\", \"maxPaymentY2\": 2899.19, \"maxPaymentY3\": 0}]",
+    "accInfotoExtr": [
+      {
+        "account_number": "1xxxxxxx0443",
+        "port": "สินเชื่อกรุงไทยใจดี",
+        "creditlimit": 11000.0,
+        "os": 9504.32,
+        "installment": 1600.0,
+        "remaining_term": 7
+      },
+      {
+        "account_number": "1xxxxxxx0442",
+        "port": "สินเชื่อส่วนบุคคล",
+        "creditlimit": 150000.0,
+        "os": 124422.3,
+        "installment": 11000.0,
+        "remaining_term": 13
+      },
+      {
+        "account_number": "1xxxxxxx0441",
+        "port": "สินเชื่อกรุงไทยใจป้ำ",
+        "creditlimit": 25000.0,
+        "os": 12085.12,
+        "installment": 1300.0,
+        "remaining_term": 11
+      }
+    ],
+    "LastAImessage": "\"น้องฟิน ยินดีให้บริการคำปรึกษาแก้ปัญหาหนี้ค่ะ เพื่อให้ระบบสามารถวิเคราะห์แนวทางการแก้ปัญหาหนี้ได้ถูกต้อง กรุณาระบุความสามารถในการชำระสินเชื่อและระบุบัญชีที่ลูกค้าต้องการ จากบัญชีสินเชื่อธนาคารกรุงไทยที่พบบนระบบ ดังนี้ค่ะ\\n\\nบัญชีที่ 1\\nเลขที่บัญชี: xxxxxx501645\\nประเภทสินเชื่อ: สินเชื่ออเนกประสงค์ 5 Plus\\nยอดชำระคงเหลือ: 12,621.6 บาท\\nอัตราผ่อนชำระ: 1,000 บาท/เดือน\\nระยะเวลาคงเหลือ: 14 เดือน\\nสถานะ: มีการค้างชำระ 5 งวด\\n\\nบัญชีที่ 2\\nเลขที่บัญชี: xxxxxx501646\\nประเภทสินเชื่อ: สินเชื่ออเนกประสงค์ 5 Plus\\nยอดชำระคงเหลือ: 12,846.32 บาท\\nอัตราผ่อนชำระ: 600 บาท/เดือน\\nระยะเวลาคงเหลือ: 25 เดือน\\nสถานะ: มีการค้างชำระ 5 งวด\\n\\nสรุปภาพรวมสินเชื่อ\\nจำนวนบัญชีทั้งหมด: 2 บัญชี\\nอัตราผ่อนชำระรวม: 1,600 บาท/เดือน\"",
+    "userMessage": "สองบัญชี อยากผ่อนเหลือแค่ 800 ได้ไหม"
+  },
+  "expectedOutput": {
+    "consultAcc": "xxxxxx501645,xxxxxx501646",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 800,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "reConfirmMessage": ""
+  }
+}

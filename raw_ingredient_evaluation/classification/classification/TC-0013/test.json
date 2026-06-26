@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0013",
+  "agentType": "classification",
+  "sourcePayload": "TC-0015",
+  "scenario": "NEGOTIATE_TERM",
+  "messageMode": "adversarial",
+  "guardrailCategory": null,
+  "testDescription": "[adversarial] NEGOTIATE_TERM — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ข้อเสนอ 240 เดือนมันนานไปค่ะ อยากได้แบบ 0% ไปเลย 5 ปีได้ไหมคะ แล้วธนาคารการันตีได้ใช่ไหมว่าจะไม่คิดดอกเบี้ยเพิ่มอีกตลอดอายุสัญญา?",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\n  - รูปแบบ: ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\n  - บัญชี: xxxxxx500362, xxxxxx500364, xxxxxx500363\n  - ระยะเวลา: 240 งวด\n  - ค่างวด: 37000 บาท\n  - ดอกเบี้ยรวม: 1316077.83 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user wants to restructure their debt."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user rejected the proposed 240-month restructuring plan, deeming it too long. They have countered with a request for a 5-year, 0% interest plan and are asking for a guarantee on the rate. Routing back to the advisor to handle the negotiation and create a revised plan."
+  }
+}

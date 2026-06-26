@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0003",
+  "agentType": "classification",
+  "sourcePayload": "TC-0003",
+  "scenario": "NEW_CONVERSATION",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] NEW_CONVERSATION — expected route_to=unknown",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "เฮ้ ธนาคารช่วยได้จริงๆ ป่ะ หรือแค่ AI ตอบแบบน้ำท่วมปาก",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "unknown",
+    "narrative": "The user is questioning the service's ability to provide real help, asking if they are speaking with an AI. The query is meta and does not relate to a specific debt question, so it is routed to unknown."
+  }
+}

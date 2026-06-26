@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0018",
+  "agentType": "classification",
+  "sourcePayload": "TC-0021",
+  "scenario": "STAFF_REQUEST",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] STAFF_REQUEST — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ต้องการปรึกษาเรื่องปรับโครงสร้างหนี้ค่ะ รบกวนขอให้เจ้าหน้าที่ธนาคารติดต่อกลับได้ไหมคะ",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user wants to consult about debt restructuring and has asked for a bank officer to contact them. Routing to the advisor to handle the request for personalized advice."
+  }
+}

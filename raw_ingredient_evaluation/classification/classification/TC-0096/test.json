@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0096",
+  "agentType": "classification",
+  "sourcePayload": "TC-0175",
+  "scenario": "NEGOTIATE_TERM",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] NEGOTIATE_TERM — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "มีแผนอื่นให้เลือกอีกไหมครับ",
+    "LastAImessage": "เสนอแนวทางการปรับปรุงสินเชื่อ ด้วยแนวทางและข้อมูลดังนี้\n\nแนวทางที่ 1: สินเชื่อรวมหนี้ MOU แบบไม่มีหลักประกัน\n  - รูปแบบแนวทางที่นำเสนอ: ขั้นต่ำที่สุดที่เป็นไปได้\n  - บัญชีที่พิจารณาปรับโครงสร้าง: 10000004\n  - ระยะเวลาผ่อนชำระ: 60 งวด\n  - ค่างวด: 6200 บาท\n  - ดอกเบี้ยรวมตลอดสัญญา: 51057.86 บาท\n  - การชำระคงที่: true",
+    "PrevAIagent": "advisor",
+    "narrative": "Customer is asking for alternative restructuring options."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "more options"
+  }
+}

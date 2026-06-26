@@ -1,0 +1,52 @@
+{
+  "testId": "TC-0083",
+  "agentType": "advisor",
+  "sourcePayload": "TC-0089",
+  "scenario": "STAFF_REQUEST",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] STAFF_REQUEST route_to='advisor' — advisor extracts: consultAcc='', maxPayment=0",
+  "webhookPath": "b7607735-bac3-4965-8c68-2ed0ef38aec4",
+  "input": {
+    "consultAcc": "",
+    "DebtSituation": null,
+    "maxPayment": 0,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "narrative": "The customer wants to consult with an agent about debt restructuring and has requested a callback. Routing to the advisor to handle the initial consultation request.",
+    "accText": "[{\"account_number\": \"1xxxxxxx1986\", \"port\": \"สินเชื่อ Home for Cash\", \"creditlimit\": 5000000.0, \"os\": 2214567.85, \"installment\": 100500.0, \"remaining_term\": 24}, {\"account_number\": \"1xxxxxxx1985\", \"port\": \"สินเชื่อบ้านกรุงไทย\", \"creditlimit\": 1500000.0, \"os\": 452790.78, \"installment\": 17000.0, \"remaining_term\": 30}]",
+    "offerText": "[]",
+    "accInfotoExtr": [
+      {
+        "account_number": "1xxxxxxx1986",
+        "port": "สินเชื่อ Home for Cash",
+        "creditlimit": 5000000.0,
+        "os": 2214567.85,
+        "installment": 100500.0,
+        "remaining_term": 24
+      },
+      {
+        "account_number": "1xxxxxxx1985",
+        "port": "สินเชื่อบ้านกรุงไทย",
+        "creditlimit": 1500000.0,
+        "os": 452790.78,
+        "installment": 17000.0,
+        "remaining_term": 30
+      }
+    ],
+    "LastAImessage": "\"\"",
+    "userMessage": "อยากขอคำปรึกษาจากเจ้าหน้าที่เรื่องการปรับโครงสร้างหนี้ค่ะ รบกวนให้เจ้าหน้าที่ติดต่อกลับได้ไหมคะ"
+  },
+  "expectedOutput": {
+    "consultAcc": "",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 0,
+    "maxTerm": 360,
+    "refPlanID": null,
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "reConfirmMessage": ""
+  }
+}

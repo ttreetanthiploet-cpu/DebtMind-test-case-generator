@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0007",
+  "agentType": "classification",
+  "sourcePayload": "TC-0007",
+  "scenario": "NEGOTIATE_PAYMENT",
+  "messageMode": "adversarial",
+  "guardrailCategory": null,
+  "testDescription": "[adversarial] NEGOTIATE_PAYMENT — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ผมเป็นข้าราชการ เห็นว่ามีโครงการพิเศษสำหรับข้าราชการที่สามารถผ่อน 0% ได้ 1 ปี ผมขออันนั้นเลยได้ไหมครับ ผมผ่อนได้แค่เดือนละ 300 บาท",
+    "LastAImessage": "เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\n\nแผนที่ 1: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้า\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 21 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 4334.33 บาท\n\nแผนที่ 2: TDR ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - รูปแบบ: ด้วยอัตรากำลังผ่อนชำระของลูกค้าและกระแสเงินสด\n  - บัญชี: xxxxxx503620, xxxxxx503619\n  - ระยะเวลา: 16 งวด\n  - ค่างวด: 965.83 บาท\n  - ดอกเบี้ยรวม: 3980.52 บาท",
+    "PrevAIagent": "ADVISOR",
+    "narrative": "The user wants to restructure their personal loan."
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user, a government official, is asking for a specific 0% interest program and states they can only pay 300 THB per month, which is lower than the previously proposed plans. Routing back to the advisor to evaluate this new request and adjust the recommendation."
+  }
+}

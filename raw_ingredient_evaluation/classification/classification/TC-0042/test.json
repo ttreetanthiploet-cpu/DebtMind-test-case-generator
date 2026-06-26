@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0042",
+  "agentType": "classification",
+  "sourcePayload": "TC-0061",
+  "scenario": "EDUCATION_QUESTION",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] EDUCATION_QUESTION — expected route_to=education",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "เห็นโฆษณาบ่อยๆ เรื่องรวมหนี้ลดค่างวด นี่คือการปรับโครงสร้างหนี้ใช่มั้ย แล้วมันจะทำให้เสียเครดิตรึเปล่าคะ",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "education",
+    "narrative": "The user is asking for information about debt consolidation. They want to know if it is the same as debt restructuring and whether it will affect their credit score. The query is being routed to the education agent for an explanation."
+  }
+}

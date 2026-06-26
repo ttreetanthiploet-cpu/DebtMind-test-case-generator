@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0037",
+  "agentType": "classification",
+  "sourcePayload": "TC-0052",
+  "scenario": "MULTI_TURN",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] MULTI_TURN — expected route_to=advisor",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "เสนอโครงการแก้หนี้ตอนนี้ที่มีอยู่ให้ที",
+    "LastAImessage": "โครงการ “คุณสู้ เราช่วย” มีมาตรการช่วยเหลือสำหรับสินเชื่อส่วนบุคคล ได้แก่ มาตรการที่ 2 “จ่าย ปิด จบ” สำหรับหนี้เสียยอดไม่เกิน 10,000 บาทต่อบัญชี <cite>khunsoo-v3p0.txt, line 55-75</cite> และมาตรการที่ 3 “จ่าย ตัด ต้น” สำหรับหนี้เสียสินเชื่อไม่มีหลักประกันยอดไม่เกิน 50,000 บาทต่อบัญชี <cite>khunsoo-v3p0.txt, line 79-96</cite>",
+    "PrevAIagent": "education",
+    "narrative": "The customer expressed their interests to find solution to the debt issue but they do not explicitly provide the information on the accoint"
+  },
+  "expectedOutput": {
+    "route_to": "advisor",
+    "narrative": "The user was previously given information about the 'คุณสู้ เราช่วย' program. They are now explicitly asking for a proposal of current debt relief programs applicable to them. Routing to the advisor to provide a personalized recommendation."
+  }
+}

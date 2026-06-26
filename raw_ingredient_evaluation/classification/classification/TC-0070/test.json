@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0070",
+  "agentType": "classification",
+  "sourcePayload": "TC-0149",
+  "scenario": "AFTER_OFFER_TEXT",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] AFTER_OFFER_TEXT — expected route_to=education",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "ดอกเบี้ยรวม 51,057 บาท คิดยังไงครับ",
+    "LastAImessage": "เสนอแนวทางการปรับปรุงสินเชื่อ ด้วยแนวทางและข้อมูลดังนี้\n\nแนวทางที่ 1: สินเชื่อรวมหนี้ MOU แบบไม่มีหลักประกัน\n  - รูปแบบแนวทางที่นำเสนอ: ขั้นต่ำที่สุดที่เป็นไปได้\n  - บัญชีที่พิจารณาปรับโครงสร้าง: 10000004\n  - ระยะเวลาผ่อนชำระ: 60 งวด\n  - ค่างวด: 6200 บาท\n  - ดอกเบี้ยรวมตลอดสัญญา: 51057.86 บาท\n  - การชำระคงที่: true",
+    "PrevAIagent": "advisor",
+    "narrative": "Customer is reviewing the plan and asking how to think about the total interest figure."
+  },
+  "expectedOutput": {
+    "route_to": "education",
+    "narrative": "The customer is questioning the total interest amount and seeking an explanation or perspective on it. Routing to education to help the customer understand how the interest is calculated and what it means in the context of the restructuring plan, before they make a decision."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0017",
+  "agentType": "classification",
+  "sourcePayload": "TC-0020",
+  "scenario": "EDUCATION_QUESTION",
+  "messageMode": "creative",
+  "guardrailCategory": null,
+  "testDescription": "[creative] EDUCATION_QUESTION — expected route_to=education",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "อยากรู้ว่าถ้าเข้าร่วมโปรแกรมพักชำระหนี้ มันจะส่งผลเสียต่อการขอสินเชื่อบ้านในอนาคตหรือเปล่าคะ?",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "education",
+    "narrative": "The user is asking whether joining a debt suspension program will negatively affect their future ability to get a home loan. This is an informational question about the consequences of a debt program. The conversation is routed to the education agent."
+  }
+}

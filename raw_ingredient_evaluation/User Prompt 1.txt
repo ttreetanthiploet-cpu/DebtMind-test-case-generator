@@ -1,0 +1,6 @@
+ข้อมูลประกอบการตัดสินใจ:
+1. ข้อมูลอ้างอิงจากฐานข้อมูล (Context): {{ $('Call \'Education v1.3\'').item.json.retrieved_chunks }}
+2. คำถามลูกค้า (User Query): {{ $('Parse Educator Input').item.json.userMessage }}
+3. Narrative: {{ $('Parse Educator Input').item.json.conversationDesc.narrative }}
+4. คำตอบที่ถูกต้อง (Expected Output): {{ $('Webhook').item.json.body.expected_result }}
+5. คำตอบจาก Chatbot (Response): {{ $('Call \'Education v1.3\'').item.json.agentOutput.replyMessage }}

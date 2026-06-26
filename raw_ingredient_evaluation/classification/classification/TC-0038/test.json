@@ -1,0 +1,20 @@
+{
+  "testId": "TC-0038",
+  "agentType": "classification",
+  "sourcePayload": "TC-0053",
+  "scenario": "EDUCATION_QUESTION",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] EDUCATION_QUESTION — expected route_to=education",
+  "webhookPath": "dbce5b9e-1397-459a-871a-5b27433f1640",
+  "input": {
+    "userMessage": "อยากสอบถามหน่อยครับ ถ้าผมเข้าโครงการปรับโครงสร้างหนี้ TDR นี่มันคืออะไร แล้วจะมีผลกับเครดิตบูโรของผมไหมครับ",
+    "LastAImessage": "",
+    "PrevAIagent": "",
+    "narrative": ""
+  },
+  "expectedOutput": {
+    "route_to": "education",
+    "narrative": "The customer is asking for information about the TDR debt restructuring program. They want to understand what it is and how it affects their credit score. Routing to the education agent to provide a general explanation."
+  }
+}

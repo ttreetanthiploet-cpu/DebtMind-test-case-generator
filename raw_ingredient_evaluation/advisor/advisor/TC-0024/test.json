@@ -1,0 +1,44 @@
+{
+  "testId": "TC-0024",
+  "agentType": "advisor",
+  "sourcePayload": "TC-0074",
+  "scenario": "NEGOTIATE_TERM",
+  "messageMode": "strict",
+  "guardrailCategory": null,
+  "testDescription": "[strict] NEGOTIATE_TERM route_to='advisor' — advisor extracts: consultAcc='xxxxxx500362,xxxxxx500364,xxxxxx500363', maxPayment=46000",
+  "webhookPath": "b7607735-bac3-4965-8c68-2ed0ef38aec4",
+  "input": {
+    "consultAcc": "xxxxxx500362,xxxxxx500364,xxxxxx500363",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 46000,
+    "maxTerm": 195,
+    "refPlanID": "TDR0120260621102006",
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "narrative": "The user has received a debt restructuring plan from the Advisor. The user wants to adjust the plan by increasing the monthly payment to shorten the 240-month term. Routing back to the advisor to recalculate the plan.",
+    "accText": "[{\"account_number\": \"1xxxxxxx1459\", \"port\": \"สินเชื่อกรุงไทยใจป้ำ\", \"creditlimit\": 25000.0, \"os\": 18713.55, \"installment\": 1500.0, \"remaining_term\": 15}]",
+    "offerText": "[{\"planId\": \"TDR0120260621102006\", \"planDesc\": \"TDR ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\", \"solutionDesc\": \"ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\", \"refAccNo\": \"xxxxxx500362, xxxxxx500364, xxxxxx500363\", \"term\": 240, \"installment\": 37000, \"totalExpInt\": 1316077.83, \"plan_desc\": \"TDR ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\", \"source_desc\": \"ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\", \"accounts\": \"xxxxxx500362, xxxxxx500364, xxxxxx500363\", \"cnt_eligible\": 3, \"cnt_total\": 3, \"total_os\": 2319714.83, \"new_inst\": 37000, \"int_rate_new\": \"7%\", \"term_change\": \"240 งวด\", \"int_total_change\": \"1316078 บาท\"}]",
+    "accInfotoExtr": [
+      {
+        "account_number": "1xxxxxxx1459",
+        "port": "สินเชื่อกรุงไทยใจป้ำ",
+        "creditlimit": 25000.0,
+        "os": 18713.55,
+        "installment": 1500.0,
+        "remaining_term": 15
+      }
+    ],
+    "LastAImessage": "\"เสนอแผนการปรับโครงสร้างสินเชื่อ ด้วยแผนงานและข้อมูลดังนี้\\n\\nแผนที่ 1: TDR ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\\n  - รูปแบบ: ด้วยอัตราขั้นต่ำที่ธนาคารเสนอได้\\n  - บัญชี: xxxxxx500362, xxxxxx500364, xxxxxx500363\\n  - ระยะเวลา: 240 งวด\\n  - ค่างวด: 37000 บาท\\n  - ดอกเบี้ยรวม: 1316077.83 บาท\"",
+    "userMessage": "ข้อเสนอ 37,000 บาทต่อเดือน ผมคิดว่าผมผ่อนได้มากกว่านั้นครับ อยากให้ระยะเวลาผ่อนสั้นลงกว่า 240 งวดได้ไหมครับ"
+  },
+  "expectedOutput": {
+    "consultAcc": "xxxxxx500362,xxxxxx500364,xxxxxx500363",
+    "DebtSituation": "DebtBurden",
+    "maxPayment": 46000,
+    "maxTerm": 195,
+    "refPlanID": "TDR0120260621102006",
+    "maxPaymentY2": null,
+    "maxPaymentY3": null,
+    "reConfirmMessage": "CLARIFY_LONG_TERM"
+  }
+}
